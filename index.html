@@ -1,900 +1,216 @@
 <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="web_standard" name="shell-type"/>
+  <style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = { 
+      darkMode: "class", 
+      theme: { 
+        extend: { 
+          colors: { 
+            "primary": "#001a42", "on-primary": "#ffffff", "primary-container": "#0b2f64", 
+            "secondary": "#115cb9", "on-secondary": "#ffffff", "surface": "#f9f9ff", 
+            "on-surface": "#111c2d", "surface-variant": "#d8e3fb", "on-surface-variant": "#44474f", 
+            "accent-gold": "#F59E0B", "civic-red": "#C81E2F", "sky-tint": "#EBF3FB",
+            "surface-container-lowest": "#ffffff", "surface-container-low": "#f0f3ff", 
+            "surface-container": "#e7eeff", "surface-container-high": "#dee8ff"
+          }, 
+          fontSize: { 
+            /* WAVE Fix: Tamaño mínimo incrementado de 10px a 12px para evitar alertas de legibilidad */
+            "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.06em", fontWeight: "700" }],
+            "body-sm": ["12px", { lineHeight: "18px", fontWeight: "400" }],
+            "body-md": ["14px", { lineHeight: "22px", fontWeight: "400" }],
+            "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "600" }],
+            "label-lg": ["14px", { lineHeight: "20px", letterSpacing: "0.02em", fontWeight: "600" }],
+            "headline-sm": ["18px", { lineHeight: "24px", fontWeight: "600" }],
+            "headline-md": ["22px", { lineHeight: "28px", fontWeight: "600" }],
+            "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.015em", fontWeight: "700" }],
+            "display-hero": ["44px", { lineHeight: "52px", letterSpacing: "-0.02em", fontWeight: "700" }]
+          },
+          spacing: { "space-xs": "0.25rem", "space-sm": "0.5rem", "space-md": "1rem", "space-lg": "1.5rem", "space-xl": "2.5rem", "margin": "2rem" }
+        } 
+      } 
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100..900&family=Work+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+</head>
+<body class="bg-surface font-body-md text-on-surface">
+  <a class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-space-md focus:py-space-sm focus:bg-accent-gold focus:text-primary focus:font-headline-sm focus:font-bold focus:shadow-md focus:outline-none" href="#main-content">Saltar al contenido principal</a>
+  
+  <header class="fixed top-0 w-full z-50 bg-surface/95 backdrop-blur-md shadow-[0_1px_8px_rgba(11,47,100,0.08)]" role="banner">
+    <div class="bg-primary text-on-primary py-space-xs">
+      <div class="max-w-7xl mx-auto px-space-md lg:px-margin flex flex-wrap items-center justify-between gap-space-xs">
+        <div class="flex items-center gap-space-sm">
+          <span aria-hidden="true" class="material-symbols-outlined text-[16px] text-accent-gold">accessibility_new</span>
+          <span class="font-label-sm text-label-sm uppercase tracking-wider">Accesibilidad UNH:</span>
+          <button aria-label="Cambiar a modo de alto contraste" class="font-label-sm px-space-xs py-0.5 rounded bg-primary-container text-on-primary hover:bg-secondary transition-colors" type="button">Alto Contraste</button>
+          <button aria-label="Aumentar tamaño de texto" class="font-label-sm px-space-xs py-0.5 rounded bg-primary-container text-on-primary hover:bg-secondary transition-colors" type="button">A+</button>
+          <button aria-label="Restablecer tamaño de texto" class="font-label-sm px-space-xs py-0.5 rounded bg-primary-container text-on-primary hover:bg-secondary transition-colors" type="button">A-</button>
+        </div>
+        <div class="flex items-center gap-space-md">
+          <a class="font-label-sm text-on-primary hover:text-accent-gold transition-colors" href="#tramite">Trámite Documentario</a>
+          <a class="font-label-sm text-on-primary hover:text-accent-gold transition-colors" href="#transparencia">Portal de Transparencia</a>
+          <a class="font-label-sm text-on-primary hover:text-accent-gold transition-colors" href="#correo">Correo Institucional</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="h-20 max-w-7xl mx-auto px-space-md lg:px-margin flex items-center justify-between">
+      <div class="flex items-center gap-space-md">
+        <!-- WAVE Fix: Alt conciso -->
+        <img alt="Logotipo Universidad Nacional de Huancavelica" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UCWIIxo3lzO_nwmHhNcuTCKcr6hwavaLCURt2rwB5cAP5Pt0JaJyaNF-TQq7QsNtopPvI6aBg8GjgckDanShWv4OD7sgpOOXUnqfvjTjNFMGS7TDC9Y0OP8IHCK_AwlBuZsdou2aV187jgUziVKQBUPycdsdCOlUkrQusp6IyU8m1jC3YC8kS8ZcoZ29mNDsQgfgKVjJjb3FEL6Mo_-9g1CnZa6Inzp5HUxrN6qOO8T31bdMM4UbWvGg"/>
+        <div class="flex flex-col">
+          <span class="font-headline-sm text-primary tracking-tight">UNH</span>
+          <span class="font-label-sm text-on-surface-variant uppercase hidden sm:block">Universidad Nacional de Huancavelica</span>
+        </div>
+      </div>
+      
+      <nav aria-label="Navegación principal" class="hidden lg:flex items-center gap-space-sm">
+        <ul class="flex items-center gap-space-xs list-none m-0 p-0">
+          <li><a aria-current="page" class="px-space-sm py-space-xs bg-primary-container text-on-primary font-label-lg rounded-lg" href="#inicio">Inicio</a></li>
+          <li><a class="font-label-lg px-space-sm py-space-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded" href="#nosotros">Nosotros</a></li>
+          <li><a class="font-label-lg px-space-sm py-space-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded" href="#academico">Académico</a></li>
+          <li><a class="font-label-lg px-space-sm py-space-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded" href="#investigacion">Investigación</a></li>
+        </ul>
+      </nav>
+      
+      <div class="flex items-center gap-space-sm">
+        <button aria-label="Buscar en el portal" class="p-space-xs text-on-surface-variant hover:bg-surface-container rounded-full" type="button">
+          <span aria-hidden="true" class="material-symbols-outlined text-[20px]">search</span>
+        </button>
+        <div aria-label="Perfil de usuario" class="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+          <span aria-hidden="true" class="material-symbols-outlined text-on-primary text-[18px]">person</span>
+        </div>
+      </div>
+    </div>
+  </header>
 
-<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "inverse-primary": "#adc6ff", "on-surface-variant": "#44474f", "secondary": "#115cb9", "surface": "#f9f9ff", "secondary-container": "#659dfe", "primary-fixed-dim": "#adc6ff", "on-tertiary-fixed-variant": "#6e3900", "surface-variant": "#d8e3fb", "error": "#ba1a1a", "civic-red": "#C81E2F", "accent-gold": "#F59E0B", "outline": "#747781", "primary-container": "#0b2f64", "on-primary-fixed-variant": "#28467c", "surface-tint": "#415e95", "on-primary": "#ffffff", "surface-bg": "#F8FAFC", "inverse-surface": "#263143", "on-primary-fixed": "#001a41", "surface-container-high": "#dee8ff", "on-error-container": "#93000a", "tertiary-container": "#4e2700", "on-primary-container": "#7c98d4", "outline-variant": "#c4c6d1", "inverse-on-surface": "#ecf1ff", "on-secondary-fixed-variant": "#004491", "secondary-fixed-dim": "#acc7ff", "tertiary-fixed-dim": "#ffb77d", "background": "#f9f9ff", "on-background": "#111c2d", "neutral-border": "#E2E8F0", "tertiary": "#301500", "surface-container-low": "#f0f3ff", "on-secondary": "#ffffff", "on-error": "#ffffff", "primary-fixed": "#d8e2ff", "on-tertiary-fixed": "#2f1500", "surface-container": "#e7eeff", "surface-bright": "#f9f9ff", "tertiary-fixed": "#ffdcc3", "sky-tint": "#EBF3FB", "surface-container-lowest": "#ffffff", "error-container": "#ffdad6", "on-tertiary-container": "#e47f15", "primary": "#001a42", "surface-dim": "#cfdaf2", "surface-container-highest": "#d8e3fb", "on-surface": "#111c2d", "on-tertiary": "#ffffff", "on-secondary-container": "#003370", "secondary-fixed": "#d7e2ff", "on-secondary-fixed": "#001a40" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "gutter-mobile": "1rem", "space-xs": "0.25rem", "gutter": "1.5rem", "margin-mobile": "1rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "space-md": "1rem", "margin": "2rem", "space-xl": "2.5rem" }, "fontFamily": { "label-sm": ["Work Sans"], "body-sm": ["Public Sans"], "headline-lg-mobile": ["Public Sans"], "headline-lg": ["Public Sans"], "body-lg": ["Public Sans"], "display-hero-mobile": ["Public Sans"], "headline-md": ["Public Sans"], "label-lg": ["Work Sans"], "display-hero": ["Public Sans"], "label-md": ["Work Sans"], "body-md": ["Public Sans"], "headline-sm": ["Public Sans"] }, "fontSize": { "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }], "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "700" }], "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }], "display-hero-mobile": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-md": ["22px", { "lineHeight": "28px", "fontWeight": "600" }], "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600" }], "display-hero": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }], "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }] } } } };</script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100..900&family=Work+Sans:wght@100..900&display=swap" rel="stylesheet"/></head><body class="bg-surface font-body-md text-on-surface"><a class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-space-md focus:py-space-sm focus:bg-accent-gold focus:text-primary focus:font-headline-sm focus:font-bold focus:shadow-md focus:outline-none" href="#main-content">Saltar al contenido principal</a><header class="fixed top-0 w-full z-50 bg-surface/95 backdrop-blur-md shadow-[0_1px_8px_rgba(11,47,100,0.08)]" role="banner"><div class="bg-primary text-on-primary py-space-xs"><div class="max-w-7xl mx-auto px-space-md lg:px-margin flex flex-wrap items-center justify-between gap-space-xs"><div class="flex items-center gap-space-sm"><span aria-hidden="true" class="material-symbols-outlined text-[16px] text-accent-gold">accessibility_new</span><span class="font-label-sm text-label-sm uppercase tracking-wider">Accesibilidad UNH:</span><button aria-label="Cambiar a modo de alto contraste" class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-primary-container text-on-primary hover:bg-secondary transition-colors" type="button">Alto Contraste</button><button aria-label="Aumentar tamaño de texto" class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-primary-container text-on-primary hover:bg-secondary transition-colors" type="button">A+</button><button aria-label="Restablecer tamaño de texto" class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-primary-container text-on-primary hover:bg-secondary transition-colors" type="button">A-</button></div><div class="flex items-center gap-space-md"><a aria-label="Acceder a Trámite Documentario Digital" class="font-label-sm text-label-sm text-on-primary hover:text-accent-gold transition-colors" data-path="tramite-documentario" href="#">Trámite Documentario</a><a aria-label="Acceder al Portal de Transparencia Estándar" class="font-label-sm text-label-sm text-on-primary hover:text-accent-gold transition-colors" data-path="portal-de-transparencia" href="#">Portal de Transparencia</a><a aria-label="Acceder al Correo Institucional UNH" class="font-label-sm text-label-sm text-on-primary hover:text-accent-gold transition-colors" data-path="correo-institucional" href="#">Correo Institucional</a></div></div></div><div class="h-20 max-w-7xl mx-auto px-space-md lg:px-margin flex items-center justify-between"><div class="flex items-center gap-space-md"><img alt="Universidad Nacional de Huancavelica - ISO 9001, 14001, 21001 Certificada" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UCWIIxo3lzO_nwmHhNcuTCKcr6hwavaLCURt2rwB5cAP5Pt0JaJyaNF-TQq7QsNtopPvI6aBg8GjgckDanShWv4OD7sgpOOXUnqfvjTjNFMGS7TDC9Y0OP8IHCK_AwlBuZsdou2aV187jgUziVKQBUPycdsdCOlUkrQusp6IyU8m1jC3YC8kS8ZcoZ29mNDsQgfgKVjJjb3FEL6Mo_-9g1CnZa6Inzp5HUxrN6qOO8T31bdMM4UbWvGg"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">UNH</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase hidden sm:block">Universidad Nacional de Huancavelica</span></div></div><nav aria-label="Navegación principal" class="hidden lg:flex items-center gap-space-sm" data-active-classes="bg-primary-container text-on-primary font-label-lg font-bold rounded-lg"><ul class="flex items-center gap-space-xs list-none m-0 p-0"><li><a aria-current="page" aria-label="Página de Inicio Institucional" class="px-space-sm py-space-xs transition-colors bg-primary-container text-on-primary font-label-lg font-bold rounded-lg" data-path="inicio" href="#">Inicio</a></li><li><a aria-label="Conocer sobre Nosotros y Órganos de Gobierno" class="font-label-lg text-label-lg px-space-sm py-space-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors rounded" data-path="nosotros-y-gobierno" href="#">Nosotros</a></li><li><a aria-label="Explorar Carreras Profesionales y Posgrado" class="font-label-lg text-label-lg px-space-sm py-space-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors rounded" data-path="oferta-academica" href="#">Académico</a></li><li><a aria-label="Repositorio e Investigación UNH" class="font-label-lg text-label-lg px-space-sm py-space-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors rounded" data-path="investigacion-e-innovacion" href="#">Investigación</a></li><li><a aria-label="Convocatorias Docentes, CAS y Admisión" class="font-label-lg text-label-lg px-space-sm py-space-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors rounded" data-path="admision-y-convocatorias" href="#">Convocatorias</a></li><li><a aria-label="Servicios y Plataformas Digitales Universitarias" class="font-label-lg text-label-lg px-space-sm py-space-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors rounded" data-path="servicios-virtuales" href="#">Servicios</a></li></ul></nav><div class="flex items-center gap-space-sm"><button aria-label="Buscar en el portal institucional" class="p-space-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-full transition-colors" type="button"><span aria-hidden="true" class="material-symbols-outlined text-[20px]">search</span></button><div aria-label="Perfil de usuario" class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span aria-hidden="true" class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-28 bg-surface" id="main-content" role="main"><div class="flex flex-col w-full">
-<!-- Región accesible: Encabezado principal y resumen institucional -->
-<section aria-labelledby="hero-main-title" class="w-full bg-primary text-on-primary py-space-xl relative overflow-hidden">
-<div class="max-w-7xl mx-auto px-space-md lg:px-margin flex flex-col gap-space-lg relative z-10">
-<div class="flex flex-wrap items-center justify-between gap-space-md">
-<div class="inline-flex items-center gap-space-xs bg-primary-container/80 px-space-sm py-space-xs rounded text-sky-tint">
-<span aria-hidden="true" class="material-symbols-outlined text-[18px] text-accent-gold">verified</span>
-<span class="font-label-md text-label-md uppercase tracking-wider">Universidad Pública Licenciada por SUNEDU • Res. N° 098-2019</span>
-</div>
-<div class="flex items-center gap-space-sm text-surface-variant font-body-sm text-body-sm">
-<span aria-hidden="true" class="material-symbols-outlined text-[16px] text-accent-gold">apartment</span>
-<span>RUC: 20168014962 | Huancavelica, Perú</span>
-</div>
-</div>
-<div class="max-w-4xl">
-<h1 class="font-display-hero text-display-hero text-on-primary tracking-tight" id="hero-main-title">
-          Portal Oficial de la Universidad Nacional de Huancavelica
-        </h1>
-<p class="mt-space-sm font-body-lg text-body-lg text-surface-container-high leading-relaxed max-w-3xl">
-          Comprometidos con la excelencia académica, la investigación científica altoandina y la gestión pública transparente con certificación internacional ISO 9001, 14001 y 21001.
-        </p>
-</div>
-<!-- Buscador institucional accesible con label explícito -->
-<form aria-label="Buscador global del portal UNH" class="w-full max-w-2xl bg-surface-container-lowest p-space-xs rounded-xl shadow-md flex flex-col sm:flex-row items-stretch gap-space-xs" role="search">
-<div class="flex-1 flex items-center px-space-sm gap-space-xs">
-<label class="sr-only" for="buscador-general">Buscar trámites, convocatorias, escuelas profesionales o resoluciones</label>
-<span aria-hidden="true" class="material-symbols-outlined text-outline">search</span>
-<input class="w-full py-space-xs px-space-xs bg-transparent text-on-surface placeholder:text-outline text-body-md font-body-md focus:outline-none" id="buscador-general" name="q" placeholder="Ej: Convocatoria CAS, Trámite de Bachiller, SISACAD..." type="search"/>
-</div>
-<button aria-label="Ejecutar búsqueda institucional" class="bg-primary text-on-primary font-label-lg text-label-lg px-space-lg py-space-sm rounded-lg hover:bg-secondary transition-colors focus:ring-2 focus:ring-accent-gold focus:outline-none flex items-center justify-center gap-space-xs" type="submit">
-<span>Buscar</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[18px]">arrow_forward</span>
-</button>
-</form>
-</div>
-<!-- Trama sutil decorativa accesible sin impacto a contraste -->
-<div aria-hidden="true" class="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-secondary/10 blur-3xl pointer-events-none"></div>
-</section>
-<!-- SECCIÓN 1: Banner Hero con Carrusel de Anuncios Principales -->
-<section aria-label="Avisos y Destacados Institucionales" class="w-full max-w-7xl mx-auto px-space-md lg:px-margin -mt-8 relative z-20">
-<div class="bg-surface-container-lowest rounded-xl shadow-md p-space-md flex flex-col gap-space-md">
-<div class="flex flex-wrap items-center justify-between gap-space-sm border-b border-surface-container-high pb-space-sm">
-<div class="flex items-center gap-space-xs">
-<span aria-hidden="true" class="material-symbols-outlined text-secondary">campaign</span>
-<h2 class="font-headline-sm text-headline-sm text-primary">Avisos y Campañas de la Comunidad Universitaria</h2>
-</div>
-<!-- Controles accesibles de carrusel WAVE/WCAG -->
-<div aria-label="Controles de carrusel de anuncios" class="flex items-center gap-space-xs" role="toolbar">
-<button aria-label="Pausar rotación automática de anuncios" class="p-space-xs text-primary hover:bg-surface-container rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary text-body-sm font-label-md flex items-center gap-1" id="btn-carousel-pause" type="button">
-<span aria-hidden="true" class="material-symbols-outlined text-[20px]">pause</span>
-<span class="hidden sm:inline">Pausar</span>
-</button>
-<button aria-label="Ver aviso anterior" class="p-space-xs text-primary hover:bg-surface-container rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" id="btn-carousel-prev" type="button">
-<span aria-hidden="true" class="material-symbols-outlined text-[20px]">arrow_back</span>
-</button>
-<span aria-live="polite" class="font-label-md text-label-md text-on-surface-variant px-space-xs" id="carousel-indicator">Aviso 1 de 2</span>
-<button aria-label="Ver siguiente aviso" class="p-space-xs text-primary hover:bg-surface-container rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" id="btn-carousel-next" type="button">
-<span aria-hidden="true" class="material-symbols-outlined text-[20px]">arrow_forward</span>
-</button>
-</div>
-</div>
-<!-- Slides del Carrusel con Alt Textual estricto -->
-<div class="relative w-full overflow-hidden rounded-lg bg-surface-container-low min-h-[220px] md:min-h-[280px]">
-<!-- Slide 1 -->
-<article aria-label="Aviso 1: Fondo Editorial UNH" class="carousel-slide block transition-opacity duration-300" id="slide-1">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md items-center bg-surface-container-low p-space-sm md:p-space-md">
-<div class="lg:col-span-8 overflow-hidden rounded-lg">
-<img alt="Flyer informativo: Fondo Editorial UNH - Publica tu libro con la Universidad e impulsa tu carrera docente con trámite de ISBN y depósito legal" class="w-full h-auto max-h-[340px] object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida/AEtjO1XUto34Z2fCThw3NKDe8YCEklrmxDwkTPYrV7hx_H-VBwVYndNK8PueEK5GXclOtbPKyZTbRHumlTbqkYxquKQGZ6DDSTh-Y_SH_-_0KU7mEgaRr717Iw_UyFjACawJV8XbHjg2bW6wvGBsunIxltaRpKu0RJkvNr3OBysllGZxZtEzRAsBH-Nq_HRA7iuhcsWoOyqUEjbFR6X0u2L7XzyP_5D7LMweACUkFrL5YNiPNCTkIAkmRGIxZw"/>
-</div>
-<div class="lg:col-span-4 flex flex-col gap-space-sm p-space-xs">
-<span class="inline-block px-space-xs py-0.5 rounded bg-sky-tint text-primary font-label-sm text-label-sm w-fit uppercase">Fondo Editorial UNH</span>
-<h3 class="font-headline-sm text-headline-sm text-primary leading-snug">Convocatoria Editorial: Publica tu Producción Intelectual</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">
-                Docentes e investigadores: publiquen textos universitarios, tratados científicos y ensayos con registro ISBN y Depósito Legal en la Biblioteca Nacional.
-              </p>
-<a aria-label="Conocer más sobre las bases para publicar un libro con el Fondo Editorial UNH" class="inline-flex items-center gap-space-xs bg-primary text-on-primary font-label-lg text-label-lg px-space-md py-space-sm rounded hover:bg-secondary transition-colors focus:ring-2 focus:ring-secondary focus:outline-none w-fit" href="https://www.unh.edu.pe/fondo-editorial/">
-<span>Postular Obra Editorial</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[16px]">open_in_new</span>
-</a>
-</div>
-</div>
-</article>
-<!-- Slide 2 -->
-<article aria-label="Aviso 2: Bolsa de Trabajo UNH" class="carousel-slide hidden transition-opacity duration-300" id="slide-2">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md items-center bg-surface-container-low p-space-sm md:p-space-md">
-<div class="lg:col-span-8 overflow-hidden rounded-lg">
-<img alt="Banner de la Bolsa de Trabajo UNH dirigida a egresados de todas las escuelas profesionales" class="w-full h-auto max-h-[340px] object-contain bg-white rounded-lg" src="https://lh3.googleusercontent.com/aida/AEtjO1XT1jZjnxb1ZO0Nr-o7fRo6ROx8snNqs2erqUOIoXZNs4vTneFuhrhfT4wUf0m3Cy7yEYyYPsqRCSg2t0XPY_GUmCCtUqrnR534UkNR4uUU3SzrTNhiSPim-FB8OMuYuvkWak6cagcI8YFzHdGkbng8ew08DkeiTOogTOis80PIzbTvXEaGdGnnfGWJNgcd3MMbbB7goSsLQnZCMs_psxumt0F900XdE5erc_-C-_ffFOwRaH1Y11a0HA"/>
-</div>
-<div class="lg:col-span-4 flex flex-col gap-space-sm p-space-xs">
-<span class="inline-block px-space-xs py-0.5 rounded bg-surface-variant text-primary font-label-sm text-label-sm w-fit uppercase">Inserción Laboral</span>
-<h3 class="font-headline-sm text-headline-sm text-primary leading-snug">Plataforma de Oportunidades Laborales para Egresados</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">
-                Conecta tu perfil profesional con convocatorias públicas y privadas a nivel regional y nacional. Registro gratuito y validación con registro de egresado.
-              </p>
-<a aria-label="Ingresar al portal de la Bolsa de Trabajo UNH para egresados" class="inline-flex items-center gap-space-xs bg-primary text-on-primary font-label-lg text-label-lg px-space-md py-space-sm rounded hover:bg-secondary transition-colors focus:ring-2 focus:ring-secondary focus:outline-none w-fit" href="https://appunh.com/empleos">
-<span>Acceder a la Bolsa de Trabajo</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[16px]">work</span>
-</a>
-</div>
-</div>
-</article>
-</div>
-</div>
-</section>
-<!-- SECCIÓN 2: Accesos Rápidos a Sistemas Universitarios y Trámites Digitales -->
-<section aria-labelledby="seccion-sistemas-tramites" class="w-full max-w-7xl mx-auto px-space-md lg:px-margin mt-space-xl">
-<div class="flex flex-col gap-space-xs mb-space-lg">
-<div class="flex items-center gap-space-xs text-secondary">
-<span aria-hidden="true" class="material-symbols-outlined text-[20px]">dashboard</span>
-<span class="font-label-md text-label-md uppercase tracking-wider font-bold">Servicios Digitales UNH</span>
-</div>
-<h2 class="font-headline-lg text-headline-lg text-primary" id="seccion-sistemas-tramites">
-        Accesos Rápidos a Sistemas y Trámites Digitales
-      </h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl">
-        Plataformas académicas y administrativas en línea para estudiantes, docentes, personal no docente y público en general con soporte para firma digital.
-      </p>
-</div>
-<!-- Grid de 8 servicios esenciales -->
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
-<!-- 1. Mesa de Partes Digital -->
-<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-<div>
-<div aria-hidden="true" class="w-12 h-12 rounded-lg bg-sky-tint flex items-center justify-center text-secondary mb-space-sm">
-<span class="material-symbols-outlined text-[28px]">mark_email_read</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Mesa de Partes Digital</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-space-md">
-            Recepción de expedientes, solicitudes y trámites externos las 24 horas del día con código de seguimiento único.
-          </p>
-</div>
-<a aria-label="Ingresar a la Mesa de Partes Digital de la UNH" class="inline-flex items-center justify-between text-secondary hover:text-primary font-label-lg text-label-lg pt-space-xs border-t border-surface-container focus:outline-none focus:ring-2 focus:ring-secondary rounded" href="https://sgd2.unh.edu.pe/mpd/inicio.do#">
-<span>Ingresar a Mesa de Partes</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[18px]">chevron_right</span>
-</a>
-</div>
-<!-- 2. Campus Virtual UNH -->
-<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-<div>
-<div aria-hidden="true" class="w-12 h-12 rounded-lg bg-sky-tint flex items-center justify-center text-secondary mb-space-sm">
-<span class="material-symbols-outlined text-[28px]">laptop_chromebook</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Campus Virtual UNH</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-space-md">
-            Entorno virtual de aprendizaje Moodle para pregrado, posgrado, entrega de tareas y evaluaciones virtuales.
-          </p>
-</div>
-<a aria-label="Acceder a la plataforma del Campus Virtual UNH" class="inline-flex items-center justify-between text-secondary hover:text-primary font-label-lg text-label-lg pt-space-xs border-t border-surface-container focus:outline-none focus:ring-2 focus:ring-secondary rounded" href="https://virtual.unh.edu.pe/">
-<span>Acceder al Campus</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[18px]">chevron_right</span>
-</a>
-</div>
-<!-- 3. SIGA WEB UNH -->
-<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-<div>
-<div aria-hidden="true" class="w-12 h-12 rounded-lg bg-sky-tint flex items-center justify-center text-secondary mb-space-sm">
-<span class="material-symbols-outlined text-[28px]">admin_panel_settings</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">SIGA WEB UNH</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-space-md">
-            Sistema Integrado de Gestión Administrativa para pedidos de compra, viáticos y control presupuestario institucional.
-          </p>
-</div>
-<a aria-label="Ingresar al Sistema Integrado de Gestión Administrativa SIGA WEB" class="inline-flex items-center justify-between text-secondary hover:text-primary font-label-lg text-label-lg pt-space-xs border-t border-surface-container focus:outline-none focus:ring-2 focus:ring-secondary rounded" href="http://sigaweb.unh.edu.pe:9007/">
-<span>Iniciar SIGA WEB</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[18px]">chevron_right</span>
-</a>
-</div>
-<!-- 4. SISACAD 2 (Sistema Académico) -->
-<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-<div>
-<div aria-hidden="true" class="w-12 h-12 rounded-lg bg-sky-tint flex items-center justify-center text-secondary mb-space-sm">
-<span class="material-symbols-outlined text-[28px]">school</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">SISACAD 2</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-space-md">
-            Gestión de matrícula en línea, consulta de calificaciones, actas de notas docentes y avance curricular de pregrado.
-          </p>
-</div>
-<a aria-label="Ingresar al sistema académico SISACAD 2" class="inline-flex items-center justify-between text-secondary hover:text-primary font-label-lg text-label-lg pt-space-xs border-t border-surface-container focus:outline-none focus:ring-2 focus:ring-secondary rounded" href="https://sisacad2.unh.edu.pe/">
-<span>Entrar a SISACAD 2</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[18px]">chevron_right</span>
-</a>
-</div>
-<!-- 5. Repositorio Institucional -->
-<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-<div>
-<div aria-hidden="true" class="w-12 h-12 rounded-lg bg-sky-tint flex items-center justify-center text-secondary mb-space-sm">
-<span class="material-symbols-outlined text-[28px]">auto_stories</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Repositorio Digital</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-space-md">
-            Acceso abierto a tesis de pregrado, posgrado, artículos científicos y revistas arbitradas de la universidad.
-          </p>
-</div>
-<a aria-label="Explorar tesis y publicaciones en el Repositorio Institucional UNH" class="inline-flex items-center justify-between text-secondary hover:text-primary font-label-lg text-label-lg pt-space-xs border-t border-surface-container focus:outline-none focus:ring-2 focus:ring-secondary rounded" href="https://repositorio.unh.edu.pe/">
-<span>Consultar Tesis UNH</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[18px]">chevron_right</span>
-</a>
-</div>
-<!-- 6. Biblioteca Virtual & MyLOFT -->
-<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-<div>
-<div aria-hidden="true" class="w-12 h-12 rounded-lg bg-sky-tint flex items-center justify-center text-secondary mb-space-sm">
-<span class="material-symbols-outlined text-[28px]">local_library</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Biblioteca & MyLOFT</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-space-md">
-            Acceso remoto a bases de datos científicas Scopus, ScienceDirect, Ebsco y catálogo de libros digitales.
-          </p>
-</div>
-<a aria-label="Ingresar a la plataforma de Biblioteca Virtual y MyLOFT UNH" class="inline-flex items-center justify-between text-secondary hover:text-primary font-label-lg text-label-lg pt-space-xs border-t border-surface-container focus:outline-none focus:ring-2 focus:ring-secondary rounded" href="https://app.myloft.xyz/user/login?institute=cl8muu0b045r30a21bbv05t3u">
-<span>Acceder a MyLOFT</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[18px]">chevron_right</span>
-</a>
-</div>
-<!-- 7. SGD & Verificador de Firmas -->
-<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-<div>
-<div aria-hidden="true" class="w-12 h-12 rounded-lg bg-sky-tint flex items-center justify-center text-secondary mb-space-sm">
-<span class="material-symbols-outlined text-[28px]">verified_user</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Firma Digital & SGD</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-space-md">
-            Verificación de integridad de resoluciones y certificados con firma digital oficial bajo estándares del Estado.
-          </p>
-</div>
-<a aria-label="Validar documentos con el verificador de firmas digitales UNH" class="inline-flex items-center justify-between text-secondary hover:text-primary font-label-lg text-label-lg pt-space-xs border-t border-surface-container focus:outline-none focus:ring-2 focus:ring-secondary rounded" href="https://sgd2.unh.edu.pe/verifica/inicio.do">
-<span>Verificar Documentos</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[18px]">chevron_right</span>
-</a>
-</div>
-<!-- 8. Directorio y Atención -->
-<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-<div>
-<div aria-hidden="true" class="w-12 h-12 rounded-lg bg-sky-tint flex items-center justify-center text-secondary mb-space-sm">
-<span class="material-symbols-outlined text-[28px]">contact_phone</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Directorio Telefónico</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-space-md">
-            Números de anexos, correos de decanatos, direcciones de escuela y oficinas de atención a usuarios en filiales.
-          </p>
-</div>
-<a aria-label="Consultar el directorio telefónico y correos de las dependencias UNH" class="inline-flex items-center justify-between text-secondary hover:text-primary font-label-lg text-label-lg pt-space-xs border-t border-surface-container focus:outline-none focus:ring-2 focus:ring-secondary rounded" href="https://appunh.com/directorio">
-<span>Ver Anexos y Correos</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[18px]">chevron_right</span>
-</a>
-</div>
-</div>
-</section>
-<!-- SECCIÓN 3: Convocatorias Vigentes (CAS, Docentes, Prácticas) -->
-<section aria-labelledby="seccion-convocatorias" class="w-full max-w-7xl mx-auto px-space-md lg:px-margin mt-space-xl">
-<div class="bg-surface-container-low rounded-xl p-space-lg flex flex-col gap-space-lg">
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm">
-<div>
-<span class="font-label-md text-label-md text-civic-red font-bold uppercase tracking-wider flex items-center gap-1">
-<span aria-hidden="true" class="material-symbols-outlined text-[18px]">notifications_active</span>
-            Procesos de Selección Públicos
-          </span>
-<h2 class="font-headline-lg text-headline-lg text-primary mt-1" id="seccion-convocatorias">
-            Nuestras Convocatorias Vigentes
+  <main class="w-full pt-28 bg-surface" id="main-content" role="main">
+    <div class="flex flex-col w-full">
+      <section aria-labelledby="hero-main-title" class="w-full bg-primary text-on-primary py-space-xl relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-space-md lg:px-margin flex flex-col gap-space-lg relative z-10">
+          <div class="max-w-4xl">
+            <h1 class="font-display-hero text-on-primary tracking-tight" id="hero-main-title">
+              Portal Oficial de la Universidad Nacional de Huancavelica
+            </h1>
+            <p class="mt-space-sm font-body-lg text-surface-container-high leading-relaxed max-w-3xl">
+              Comprometidos con la excelencia académica, la investigación científica altoandina y la gestión pública transparente con certificación internacional ISO.
+            </p>
+          </div>
+          
+          <form aria-label="Buscador global del portal UNH" class="w-full max-w-2xl bg-surface-container-lowest p-space-xs rounded-xl shadow-md flex flex-col sm:flex-row items-stretch gap-space-xs" role="search">
+            <div class="flex-1 flex items-center px-space-sm gap-space-xs">
+              <label class="sr-only" for="buscador-general">Buscar trámites o convocatorias</label>
+              <span aria-hidden="true" class="material-symbols-outlined text-outline">search</span>
+              <input class="w-full py-space-xs px-space-xs bg-transparent text-on-surface placeholder:text-outline text-body-md focus:outline-none" id="buscador-general" name="q" placeholder="Ej: Convocatoria CAS..." type="search"/>
+            </div>
+            <!-- WAVE Fix: Label in Name, el texto "Buscar" ahora coincide estrictamente con su función sin sobre-escribirse -->
+            <button class="bg-primary text-on-primary font-label-lg px-space-lg py-space-sm rounded-lg hover:bg-secondary transition-colors focus:ring-2 focus:ring-accent-gold flex items-center justify-center gap-space-xs" type="submit">
+              <span>Buscar</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-[18px]">arrow_forward</span>
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- WAVE Fix: aria-labelledby en lugar de aria-label vacío cuando hay un H2 presente -->
+      <section aria-labelledby="avisos-title" class="w-full max-w-7xl mx-auto px-space-md lg:px-margin -mt-8 relative z-20">
+        <div class="bg-surface-container-lowest rounded-xl shadow-md p-space-md flex flex-col gap-space-md">
+          <div class="flex flex-wrap items-center justify-between gap-space-sm border-b border-surface-container-high pb-space-sm">
+            <div class="flex items-center gap-space-xs">
+              <h2 id="avisos-title" class="font-headline-sm text-primary">Avisos y Campañas de la Comunidad</h2>
+            </div>
+            <div aria-label="Controles de carrusel" class="flex items-center gap-space-xs" role="toolbar">
+              <button aria-label="Pausar rotación automática" class="p-space-xs text-primary hover:bg-surface-container rounded-lg focus:ring-2" id="btn-carousel-pause" type="button">
+                <span aria-hidden="true" class="material-symbols-outlined text-[20px]">pause</span>
+              </button>
+              <button aria-label="Ver aviso anterior" class="p-space-xs text-primary hover:bg-surface-container rounded-lg focus:ring-2" id="btn-carousel-prev" type="button">
+                <span aria-hidden="true" class="material-symbols-outlined text-[20px]">arrow_back</span>
+              </button>
+              <span aria-live="polite" class="font-label-md px-space-xs" id="carousel-indicator">Aviso 1 de 2</span>
+              <button aria-label="Ver siguiente aviso" class="p-space-xs text-primary hover:bg-surface-container rounded-lg focus:ring-2" id="btn-carousel-next" type="button">
+                <span aria-hidden="true" class="material-symbols-outlined text-[20px]">arrow_forward</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="relative w-full overflow-hidden rounded-lg bg-surface-container-low min-h-[220px]">
+            <article aria-label="Aviso 1: Fondo Editorial UNH" class="carousel-slide block transition-opacity duration-300" id="slide-1">
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md items-center p-space-sm md:p-space-md">
+                <div class="lg:col-span-8 overflow-hidden rounded-lg">
+                  <!-- WAVE Fix: Reducción drástica del ALT largo, delegando detalles al DOM -->
+                  <img alt="Flyer del Fondo Editorial UNH para publicación de libros" class="w-full h-auto max-h-[340px] object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida/AEtjO1XUto34Z2fCThw3NKDe8YCEklrmxDwkTPYrV7hx_H-VBwVYndNK8PueEK5GXclOtbPKyZTbRHumlTbqkYxquKQGZ6DDSTh-Y_SH_-_0KU7mEgaRr717Iw_UyFjACawJV8XbHjg2bW6wvGBsunIxltaRpKu0RJkvNr3OBysllGZxZtEzRAsBH-Nq_HRA7iuhcsWoOyqUEjbFR6X0u2L7XzyP_5D7LMweACUkFrL5YNiPNCTkIAkmRGIxZw"/>
+                </div>
+                <div class="lg:col-span-4 flex flex-col gap-space-sm p-space-xs">
+                  <h3 class="font-headline-sm text-primary">Convocatoria Editorial: Publica tu Producción Intelectual</h3>
+                  <a aria-label="Postular Obra Editorial al Fondo de la UNH" class="inline-flex items-center gap-space-xs bg-primary text-on-primary font-label-lg px-space-md py-space-sm rounded hover:bg-secondary focus:ring-2 w-fit" href="https://www.unh.edu.pe/fondo-editorial/">
+                    <span>Postular Obra Editorial</span>
+                    <span aria-hidden="true" class="material-symbols-outlined text-[16px]">open_in_new</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+            <article aria-label="Aviso 2: Bolsa de Trabajo UNH" class="carousel-slide hidden transition-opacity duration-300" id="slide-2">
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md items-center p-space-sm md:p-space-md">
+                <div class="lg:col-span-8 overflow-hidden rounded-lg">
+                  <img alt="Banner de la Bolsa de Trabajo UNH para egresados" class="w-full h-auto max-h-[340px] object-contain rounded-lg" src="https://lh3.googleusercontent.com/aida/AEtjO1XT1jZjnxb1ZO0Nr-o7fRo6ROx8snNqs2erqUOIoXZNs4vTneFuhrhfT4wUf0m3Cy7yEYyYPsqRCSg2t0XPY_GUmCCtUqrnR534UkNR4uUU3SzrTNhiSPim-FB8OMuYuvkWak6cagcI8YFzHdGkbng8ew08DkeiTOogTOis80PIzbTvXEaGdGnnfGWJNgcd3MMbbB7goSsLQnZCMs_psxumt0F900XdE5erc_-C-_ffFOwRaH1Y11a0HA"/>
+                </div>
+                <div class="lg:col-span-4 flex flex-col gap-space-sm p-space-xs">
+                  <h3 class="font-headline-sm text-primary">Plataforma de Oportunidades Laborales</h3>
+                  <a class="inline-flex items-center gap-space-xs bg-primary text-on-primary font-label-lg px-space-md py-space-sm rounded hover:bg-secondary focus:ring-2 w-fit" href="https://appunh.com/empleos">
+                    <span>Acceder a la Bolsa de Trabajo</span>
+                    <span aria-hidden="true" class="material-symbols-outlined text-[16px]">work</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="seccion-calidad-iso" class="w-full max-w-7xl mx-auto px-space-md lg:px-margin mt-space-xl">
+        <div class="flex flex-col gap-space-xs mb-space-md">
+          <h2 class="font-headline-lg text-primary" id="seccion-calidad-iso">
+            Políticas Institucionales y Sistema Integrado
           </h2>
-<p class="font-body-md text-body-md text-on-surface-variant mt-1">
-            Concursos transparentes bajo normas del régimen laboral público DL 276, CAS y Ley Universitaria N° 30220.
-          </p>
-</div>
-<a aria-label="Revisar el archivo histórico completo de convocatorias de la UNH" class="inline-flex items-center gap-space-xs font-label-lg text-label-lg text-primary hover:text-secondary focus:outline-none focus:ring-2 focus:ring-secondary rounded py-space-xs" href="https://www.unh.edu.pe/convocatorias-cas/">
-<span>Ver Todas las Convocatorias</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[18px]">arrow_forward</span>
-</a>
-</div>
-<!-- Tarjetas de Convocatorias con información accesible clara -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
-<!-- Convocatoria 1: CAS -->
-<article class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
-<div>
-<div class="flex items-center justify-between gap-space-xs mb-space-xs">
-<span class="px-space-xs py-0.5 rounded bg-[#FEF3C7] text-[#B45309] font-label-sm text-label-sm uppercase font-bold">CAS 2026</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Postulación Abierta</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Convocatoria CAS N° 004-2026-UNH</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
-              Contratación de especialistas administrativos, ingenieros de sistemas y técnicos para dependencias de Sede Central.
-            </p>
-<div class="flex items-center gap-space-xs text-body-sm text-on-surface mb-space-md font-medium">
-<span aria-hidden="true" class="material-symbols-outlined text-[16px] text-civic-red">event</span>
-<span>Cierre de recepción: 30 de Octubre</span>
-</div>
-</div>
-<a aria-label="Descargar bases completas de la Convocatoria CAS N° 004-2026-UNH" class="inline-flex items-center justify-center gap-space-xs bg-primary text-on-primary font-label-md text-label-md px-space-sm py-space-xs rounded hover:bg-secondary transition-colors focus:ring-2 focus:ring-secondary focus:outline-none" href="https://www.unh.edu.pe/convocatorias-cas/">
-<span>Bases y Cronograma</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[16px]">description</span>
-</a>
-</article>
-<!-- Convocatoria 2: Docente -->
-<article class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
-<div>
-<div class="flex items-center justify-between gap-space-xs mb-space-xs">
-<span class="px-space-xs py-0.5 rounded bg-sky-tint text-primary font-label-sm text-label-sm uppercase font-bold">Docente</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Semestre 2026-II</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Contrata de Docentes y Jefes de Práctica</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
-              Plazas en Ingeniería Civil, Ciencias de la Salud, Ciencias Agrarias y Facultad de Educación en filiales.
-            </p>
-<div class="flex items-center gap-space-xs text-body-sm text-on-surface mb-space-md font-medium">
-<span aria-hidden="true" class="material-symbols-outlined text-[16px] text-civic-red">event</span>
-<span>Evaluación de CV: En Curso</span>
-</div>
-</div>
-<a aria-label="Consultar los requisitos para la contrata de docentes y jefes de práctica UNH" class="inline-flex items-center justify-center gap-space-xs bg-primary text-on-primary font-label-md text-label-md px-space-sm py-space-xs rounded hover:bg-secondary transition-colors focus:ring-2 focus:ring-secondary focus:outline-none" href="https://www.unh.edu.pe/contrata-docentes-jefes-de-practica/">
-<span>Ver Plazas Vacantes</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[16px]">description</span>
-</a>
-</article>
-<!-- Convocatoria 3: DL 276 -->
-<article class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
-<div>
-<div class="flex items-center justify-between gap-space-xs mb-space-xs">
-<span class="px-space-xs py-0.5 rounded bg-surface-variant text-primary font-label-sm text-label-sm uppercase font-bold">D.L. 276</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Nombramiento</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Concurso de Méritos Nombramiento 276</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
-              Proceso para el pase a carrera administrativa de servidores públicos conforme a las normas presupuestales anuales.
-            </p>
-<div class="flex items-center gap-space-xs text-body-sm text-on-surface mb-space-md font-medium">
-<span aria-hidden="true" class="material-symbols-outlined text-[16px] text-civic-red">event</span>
-<span>Absolución de Reclamos</span>
-</div>
-</div>
-<a aria-label="Revisar los resultados y cronograma del nombramiento D.L. 276 de la UNH" class="inline-flex items-center justify-center gap-space-xs bg-primary text-on-primary font-label-md text-label-md px-space-sm py-space-xs rounded hover:bg-secondary transition-colors focus:ring-2 focus:ring-secondary focus:outline-none" href="https://www.unh.edu.pe/nombramiento-276-2025/">
-<span>Resultados de Etapa</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[16px]">description</span>
-</a>
-</article>
-<!-- Convocatoria 4: Prácticas Preprofesionales -->
-<article class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
-<div>
-<div class="flex items-center justify-between gap-space-xs mb-space-xs">
-<span class="px-space-xs py-0.5 rounded bg-[#DCFCE7] text-[#15803D] font-label-sm text-label-sm uppercase font-bold">Estudiantes</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Prácticas</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Prácticas Pre y Profesionales 2026</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
-              Oportunidades de formación en el Centro de Cómputo, Laboratorios de Ensayos y Oficina de Asesoría Jurídica.
-            </p>
-<div class="flex items-center gap-space-xs text-body-sm text-on-surface mb-space-md font-medium">
-<span aria-hidden="true" class="material-symbols-outlined text-[16px] text-civic-red">event</span>
-<span>Postulación Digital</span>
-</div>
-</div>
-<a aria-label="Postular al programa de prácticas pre y profesionales de la UNH" class="inline-flex items-center justify-center gap-space-xs bg-primary text-on-primary font-label-md text-label-md px-space-sm py-space-xs rounded hover:bg-secondary transition-colors focus:ring-2 focus:ring-secondary focus:outline-none" href="https://www.unh.edu.pe/convocatoria-practicas-profesionales/">
-<span>Postular a Prácticas</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[16px]">description</span>
-</a>
-</article>
-</div>
-</div>
-</section>
-<!-- SECCIÓN 4: Calidad Universitaria y Certificaciones ISO -->
-<section aria-labelledby="seccion-calidad-iso" class="w-full max-w-7xl mx-auto px-space-md lg:px-margin mt-space-xl">
-<div class="flex flex-col gap-space-xs mb-space-md">
-<div class="flex items-center gap-space-xs text-secondary">
-<span aria-hidden="true" class="material-symbols-outlined text-[20px]">workspace_premium</span>
-<span class="font-label-md text-label-md uppercase tracking-wider font-bold">Aseguramiento de la Calidad</span>
-</div>
-<h2 class="font-headline-lg text-headline-lg text-primary" id="seccion-calidad-iso">
-        Políticas Institucionales y Sistema de Gestión Integrado
-      </h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl">
-        Conoce los compromisos de mejora continua, responsabilidad ambiental y estándares auditados de la UNH bajo normas internacionales.
-      </p>
-</div>
-<!-- Pestañas de Políticas accesibles por teclado -->
-<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col gap-space-md">
-<div aria-label="Pestañas de políticas institucionales de la UNH" class="flex flex-wrap gap-space-xs border-b border-surface-container" role="tablist">
-<button aria-controls="panel-iso-1" aria-selected="true" class="tab-btn px-space-md py-space-sm font-label-lg text-label-lg font-bold text-primary border-b-2 border-primary focus:outline-none focus:ring-2 focus:ring-secondary rounded-t" id="tab-btn-1" role="tab">
-          1. Alcance del Sistema de Calidad
-        </button>
-<button aria-controls="panel-iso-2" aria-selected="false" class="tab-btn px-space-md py-space-sm font-label-lg text-label-lg font-medium text-on-surface-variant hover:text-primary focus:outline-none focus:ring-2 focus:ring-secondary rounded-t" id="tab-btn-2" role="tab">
-          2. Política y Objetivos de Calidad
-        </button>
-<button aria-controls="panel-iso-3" aria-selected="false" class="tab-btn px-space-md py-space-sm font-label-lg text-label-lg font-medium text-on-surface-variant hover:text-primary focus:outline-none focus:ring-2 focus:ring-secondary rounded-t" id="tab-btn-3" role="tab">
-          3. Política de Gestión Ambiental
-        </button>
-</div>
-<!-- Panel 1: Alcance SGC -->
-<div aria-labelledby="tab-btn-1" class="tab-panel flex flex-col gap-space-md" id="panel-iso-1" role="tabpanel">
-<div class="overflow-hidden rounded-lg bg-surface-container-low p-space-xs">
-<img alt="Diagrama del Alcance del Sistema de Gestión de la Calidad de la UNH en sede central y filiales" class="w-full h-auto object-contain rounded" src="https://lh3.googleusercontent.com/aida/AEtjO1Xnl6RfrWIjUp4exNtVNLdOJ4XYxG__Ipl4C1rOeZ1NgAXbn4xwUbfnQOjemZDqXgZXVvwKIPDU8SkGutfAbHrJbTcI_1qBUXPBaLHlCoCxsjD3rVXYEEMh4_Cu69AM4dVSkNfV7sUYU27m2ZJhdz9lAN1-e-0jFGuzkSgtCCxWBJXB2kj_L7-EmFhvvTdYNDqWevbDC0hwdUGPcz4HNpMwRykE_rC3s_wouEe9hcNarkSskAlRsw1nfg"/>
-</div>
-<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-space-sm">
-<p class="font-body-md text-body-md text-on-surface-variant">
-            Aprobado para procesos de admisión, formación académica de pregrado, posgrado y servicios de apoyo en Huancavelica, Angaraes, Acobamba y Pampas.
-          </p>
-<a aria-label="Leer la resolución de aprobación del Alcance de Calidad UNH" class="inline-flex items-center gap-space-xs text-secondary hover:text-primary font-label-lg text-label-lg focus:outline-none focus:ring-2 focus:ring-secondary rounded py-space-xs whitespace-nowrap" href="https://www.unh.edu.pe/alcance-calidad/">
-<span>Resolución de Alcance</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[16px]">open_in_new</span>
-</a>
-</div>
-</div>
-<!-- Panel 2: Política de Calidad -->
-<div aria-labelledby="tab-btn-2" class="tab-panel hidden flex flex-col gap-space-md" id="panel-iso-2" role="tabpanel">
-<div class="overflow-hidden rounded-lg bg-surface-container-low p-space-xs">
-<img alt="Política de Calidad y seis Objetivos de Calidad institucionales de la UNH" class="w-full h-auto object-contain rounded" src="https://lh3.googleusercontent.com/aida/AEtjO1WIo6-2C8ot_aU7TfWXPDiIqV5hBcHmv-1T1mMXsD1-DVtdQ6iX0UsH0DKjWcVo6ncWLy21V8CtRcmN02jwP_JYSLpttTkJm2MLK7lHERbJXwSq_Ns3rWcRRoLYIDlCcsnd0JDYfShVqLG2vmoF38ANNMtMuOaaCDEz69ZzLN9EYtABKQ8F4Q43jHiVWP7XsXWQPsKTRg2yVV1qR0HhjGV9NYm_2qqdmo5VqrC3Z1rgE9SaMfpnhzCGLg"/>
-</div>
-<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-space-sm">
-<p class="font-body-md text-body-md text-on-surface-variant">
-            Enfoque en la satisfacción de las necesidades de la comunidad estudiantil, fomento de la ética y modernización pedagógica continua.
-          </p>
-<a aria-label="Consultar los seis objetivos específicos de calidad institucional de la UNH" class="inline-flex items-center gap-space-xs text-secondary hover:text-primary font-label-lg text-label-lg focus:outline-none focus:ring-2 focus:ring-secondary rounded py-space-xs whitespace-nowrap" href="https://www.unh.edu.pe/politicas-calidad/">
-<span>Ver Objetivos de Calidad</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[16px]">open_in_new</span>
-</a>
-</div>
-</div>
-<!-- Panel 3: Gestión Ambiental -->
-<div aria-labelledby="tab-btn-3" class="tab-panel hidden flex flex-col gap-space-md" id="panel-iso-3" role="tabpanel">
-<div class="overflow-hidden rounded-lg bg-surface-container-low p-space-xs">
-<img alt="Política de Gestión Ambiental y Objetivos Ambientales de sostenibilidad institucional" class="w-full h-auto object-contain rounded" src="https://lh3.googleusercontent.com/aida/AEtjO1XOPYif6MhQbZzLQikgapqpXAvYrMYP-TYZ_n9zs85sfDagkO3FROaJ7zvAw9Jom2jPFyR0qyDL7cFxdx0ruZbdz1rrwNpZWo76n6sniM_NtG47kOBfOIMmyBwuv5Je2rMM5IU57GPA5XTkUvdMsa98vqnytP5dsxTQ4C5T7f4-YEf0V3xB0KFI4k5acnKQN6igCfqe4XbXrXeLlFD9gCi5mf9Fy4lOm3PHRt0bgMK2ApjcYj4f6qdqfA"/>
-</div>
-<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-space-sm">
-<p class="font-body-md text-body-md text-on-surface-variant">
-            Compromiso con la ecoeficiencia universitaria, manejo seguro de residuos en laboratorios y protección del ecosistema andino.
-          </p>
-<a aria-label="Descargar el plan de gestión ambiental y ecoeficiencia de la UNH" class="inline-flex items-center gap-space-xs text-secondary hover:text-primary font-label-lg text-label-lg focus:outline-none focus:ring-2 focus:ring-secondary rounded py-space-xs whitespace-nowrap" href="https://www.unh.edu.pe/gestion-ambiental/">
-<span>Plan Ambiental Institucional</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[16px]">open_in_new</span>
-</a>
-</div>
-</div>
-</div>
-</section>
-<!-- SECCIÓN 5: Noticias y Actualidad Universitaria -->
-<section aria-labelledby="seccion-actualidad-noticias" class="w-full max-w-7xl mx-auto px-space-md lg:px-margin mt-space-xl">
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm mb-space-lg">
-<div>
-<div class="flex items-center gap-space-xs text-secondary">
-<span aria-hidden="true" class="material-symbols-outlined text-[20px]">newspaper</span>
-<span class="font-label-md text-label-md uppercase tracking-wider font-bold">Comunicaciones UNH</span>
-</div>
-<h2 class="font-headline-lg text-headline-lg text-primary mt-1" id="seccion-actualidad-noticias">
-          Nuestra Sección de Actualidad
-        </h2>
-<p class="font-body-md text-body-md text-on-surface-variant mt-1">
-          Acontecimientos científicos, actividades académicas y convenios de desarrollo institucional.
-        </p>
-</div>
-<a aria-label="Ir a la sala de prensa y archivo completo de noticias institucionales" class="inline-flex items-center gap-space-xs font-label-lg text-label-lg text-primary hover:text-secondary focus:outline-none focus:ring-2 focus:ring-secondary rounded py-space-xs" href="https://www.unh.edu.pe/">
-<span>Sala de Prensa Completa</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[18px]">arrow_forward</span>
-</a>
-</div>
-<!-- Grid de 4 Noticias con Alts explícitos WAVE -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
-<!-- Noticia 1 -->
-<article class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col justify-between">
-<div>
-<div class="w-full h-44 overflow-hidden bg-surface-container">
-<img alt="Autoridades universitarias de la UNH y delegaciones académicas en sala de sesiones institucional" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1WHzSilh_kyVTRmItdVEKotUr9M8zgUnA9WdbWAk43uCp2Ema3QrPu5nnNJdiLIa9D9NGDwSrhDyh782tea3Qzqbn9FoA1Xtn6-AmdVG34n1Xyqjjkpk0k6yc9jwkjjYngRNdDfmbI_-OKYHW1yYWGgnhnO3UfnjHZbGrw6RY2Zbf4sOXMNnPpRCCS1heMLb05vq8yDaEX8x8yyw2Q2UKX8PGlLNjuMSD1SHnjH1OZXKIaFt8-knJ7Vuw"/>
-</div>
-<div class="p-space-md">
-<div class="flex items-center gap-space-xs text-body-sm text-on-surface-variant mb-space-xs">
-<span aria-hidden="true" class="material-symbols-outlined text-[14px]">calendar_today</span>
-<time datetime="2026-09-21">21 de Septiembre, 2026</time>
-<span>•</span>
-<span>Of. Imagen</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs leading-snug">
-              UNH participa en el encuentro de conexión del Proyecto RAÍCES
-            </h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-3">
-              Encuentro binacional enfocado en impulsar el emprendimiento artesanal sostenible y la transferencia científica entre comunidades de Perú y Colombia.
-            </p>
-</div>
-</div>
-<div class="px-space-md pb-space-md pt-0">
-<a aria-label="Leer noticia completa sobre el encuentro de conexión del Proyecto RAÍCES" class="inline-flex items-center gap-space-xs font-label-md text-label-md text-secondary hover:text-primary focus:outline-none focus:ring-2 focus:ring-secondary rounded" href="https://www.unh.edu.pe/unh-participa-en-el-encuentro-de-conexion-del-proyecto-raices-para-impulsar-el-emprendimiento-artesanal-sostenible-en-peru-y-colombia/">
-<span>Leer noticia completa</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</a>
-</div>
-</article>
-<!-- Noticia 2 -->
-<article class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col justify-between">
-<div>
-<div class="w-full h-44 overflow-hidden bg-surface-container">
-<img alt="Estudiantes universitarios reunidos en el patio central del campus Paturpampa de la UNH" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1VCIxY6MTEyM86Hi_XkLH4Z_TuPl0q21zFpikjDK8fPutfJ0VmaYeAyy8eP_MaloAaMNTd9GfwtiNLFz55vB2NfiPWn12pa0QRadFCeZqOlXUP1JQ634pQQUAZNiUZh23HPFXTB9sjMy1-q2AYKIs8kt_M9hcwg2AyjIPVkxrRwWlCEHO95TQhB5i8Ac2kJP2MCQQo4BjbFD0Z6jEYYYzkRNLVHhIxaTIlW-Db-CxkMz-8vliyJr_t8"/>
-</div>
-<div class="p-space-md">
-<div class="flex items-center gap-space-xs text-body-sm text-on-surface-variant mb-space-xs">
-<span aria-hidden="true" class="material-symbols-outlined text-[14px]">calendar_today</span>
-<time datetime="2026-09-21">21 de Septiembre, 2026</time>
-<span>•</span>
-<span>CEPRE UNH</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs leading-snug">
-              CEPRE - UNH inaugura el ciclo académico Setiembre–Noviembre
-            </h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-3">
-              Con gran asistencia de postulantes en sede central y filiales, se dio inicio a la preparación preuniversitaria con vacantes de ingreso directo.
-            </p>
-</div>
-</div>
-<div class="px-space-md pb-space-md pt-0">
-<a aria-label="Leer noticia completa sobre la inauguración del ciclo académico de CEPRE UNH" class="inline-flex items-center gap-space-xs font-label-md text-label-md text-secondary hover:text-primary focus:outline-none focus:ring-2 focus:ring-secondary rounded" href="https://www.unh.edu.pe/cepre-unh-inaugura-el-ciclo-academico-setiembre-noviembre-2027-ii-y-fortalece-la-preparacion-de-futuros-postulantes/">
-<span>Leer noticia completa</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</a>
-</div>
-</article>
-<!-- Noticia 3 -->
-<article class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col justify-between">
-<div>
-<div class="w-full h-44 overflow-hidden bg-surface-container">
-<img alt="Acto protocolar de articulación entre la UNH y la Autoridad Nacional del Agua ANA" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1Wke50qSzAhN94pkNj2dPO2GqwHDf3j5ZchV-3AyPadtfUSdaI8IW0zrYa1C7ctrXceNlbAg_LgP55L1yYMfIrAGNJL2zEqQlKeWj4OitxR7JbN7MeC9ME6pO7hIIz9v9_kkcEZVTiu3Q6GfQirIuG6TyPvKe0fYh0DdGv4k3hXvNoETwBE1962hKgljY-hYe_lGJ2FeYFhMtjxwxicx-o41rGC0ZaSiztPsWnwp59GIqHgHA"/>
-</div>
-<div class="p-space-md">
-<div class="flex items-center gap-space-xs text-body-sm text-on-surface-variant mb-space-xs">
-<span aria-hidden="true" class="material-symbols-outlined text-[14px]">calendar_today</span>
-<time datetime="2026-09-18">18 de Septiembre, 2026</time>
-<span>•</span>
-<span>Ing. Sanitaria</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs leading-snug">
-              Estudiantes de Ingeniería Civil y Sanitaria capacitan en gestión hídrica
-            </h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-3">
-              Junto a la ANA se desarrollan jornadas de prevención de desastres, conservación de cuencas altoandinas y seguridad en obras hidráulicas.
-            </p>
-</div>
-</div>
-<div class="px-space-md pb-space-md pt-0">
-<a aria-label="Leer noticia completa sobre la capacitación de estudiantes en gestión hídrica y prevención de riesgos" class="inline-flex items-center gap-space-xs font-label-md text-label-md text-secondary hover:text-primary focus:outline-none focus:ring-2 focus:ring-secondary rounded" href="https://www.unh.edu.pe/estudiantes-de-ingenieria-civil-y-sanitaria-de-la-unh-fortalecen-sus-conocimientos-sobre-gestion-del-agua-y-prevencion-de-riesgos/">
-<span>Leer noticia completa</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</a>
-</div>
-</article>
-<!-- Noticia 4 -->
-<article class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col justify-between">
-<div>
-<div class="w-full h-44 overflow-hidden bg-surface-container">
-<img alt="Atención médica y campaña de salud para estudiantes en el Centro Médico de Bienestar Universitario" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1XLZnJYFi2k-H4PaDORwuEEYxH1NqNTSRwC7d5DPFp8Hj5olV0RxBrOp1Kt3t02_m5lCSWVDZ8hgAc_IhDXWWY5uxtGpmGE_fYDh30VfWwpGWcuC_VamkzJS8gx1LLnyxZ0W5DNry3HvV0Vxy9y_8Rn5cmMBedhH0m-3lmpaHNVS3l0wgMm6dgUNcQbn7k5RLsoLwMYn8fLaBlHU-GlE7lYhM7mQ9lnRUPUHr7bZjT0qaftO4KcfD0N"/>
-</div>
-<div class="p-space-md">
-<div class="flex items-center gap-space-xs text-body-sm text-on-surface-variant mb-space-xs">
-<span aria-hidden="true" class="material-symbols-outlined text-[14px]">calendar_today</span>
-<time datetime="2026-09-18">18 de Septiembre, 2026</time>
-<span>•</span>
-<span>Bienestar</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs leading-snug">
-              Centro Médico de Bienestar Universitario refuerza atención médica
-            </h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-3">
-              Servicio de triaje, soporte psicológico, medicina general y odontología con campañas preventivas para toda la comunidad universitaria.
-            </p>
-</div>
-</div>
-<div class="px-space-md pb-space-md pt-0">
-<a aria-label="Leer noticia completa sobre las atenciones médicas y campañas del Centro Médico de Bienestar" class="inline-flex items-center gap-space-xs font-label-md text-label-md text-secondary hover:text-primary focus:outline-none focus:ring-2 focus:ring-secondary rounded" href="https://www.unh.edu.pe/centro-medico-de-bienestar-universitario-de-la-unh-brinda-atencion-a-estudiantes-tras-accidente-de-transito/">
-<span>Leer noticia completa</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</a>
-</div>
-</article>
-</div>
-</section>
-<!-- SECCIÓN 6: Canales de Pago Banco de la Nación y Códigos Oficiales (Tabla Accesible WAVE) -->
-<section aria-labelledby="seccion-tarifario-pagos" class="w-full max-w-7xl mx-auto px-space-md lg:px-margin mt-space-xl">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
-<!-- Columna Informativa de Canales de Pago -->
-<div class="lg:col-span-5 flex flex-col gap-space-md">
-<div>
-<div class="flex items-center gap-space-xs text-secondary">
-<span aria-hidden="true" class="material-symbols-outlined text-[20px]">payments</span>
-<span class="font-label-md text-label-md uppercase tracking-wider font-bold">Recaudación y Tasas</span>
-</div>
-<h2 class="font-headline-lg text-headline-lg text-primary mt-1" id="seccion-tarifario-pagos">
-            Canales de Pago y Tarifario Institucional
-          </h2>
-<p class="font-body-md text-body-md text-on-surface-variant mt-2">
-            Realiza el abono de tus trámites académicos y administrativos a través de las ventanillas, agentes Multired o la plataforma digital Págalo.pe.
-          </p>
-</div>
-<div class="bg-surface-container-low p-space-md rounded-xl flex flex-col gap-space-sm">
-<h3 class="font-headline-sm text-headline-sm text-primary flex items-center gap-space-xs">
-<span aria-hidden="true" class="material-symbols-outlined text-secondary">info</span>
-            Indicaciones de Comisión
-          </h3>
-<ul class="list-disc list-inside text-body-sm font-body-sm text-on-surface-variant space-y-1">
-<li><strong>Agentes y Ventanilla Banco de la Nación:</strong> Comisión de S/ 1.00 por operaciones iguales o mayores a S/ 20.00.</li>
-<li><strong>Plataforma Digital Págalo.pe:</strong> Comisión de S/ 1.80 para montos de S/ 1 a S/ 144 soles (0.0125% para montos superiores).</li>
-<li><strong>Aceptación:</strong> Tarjetas Visa, Mastercard o billeteras Yape/Plin mediante el sistema Págalo.pe del Estado Peruano.</li>
-</ul>
-</div>
-<div class="flex flex-wrap gap-space-sm">
-<a aria-label="Ingresar a Págalo punto pe del Banco de la Nación en nueva pestaña" class="inline-flex items-center gap-space-xs bg-civic-red text-on-primary font-label-lg text-label-lg px-space-md py-space-sm rounded hover:opacity-90 transition-opacity focus:ring-2 focus:ring-civic-red focus:outline-none" href="https://pagalo.pe/" rel="noopener noreferrer" target="_blank">
-<span>Pagar en Págalo.pe</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[18px]">open_in_new</span>
-</a>
-<a aria-label="Ver tarifario de tasas y derechos universitarios completo" class="inline-flex items-center gap-space-xs bg-primary text-on-primary font-label-lg text-label-lg px-space-md py-space-sm rounded hover:bg-secondary transition-colors focus:ring-2 focus:ring-secondary focus:outline-none" href="https://appunh.com/tarifas-publicas">
-<span>Tarifario Completo</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[18px]">download</span>
-</a>
-</div>
-</div>
-<!-- Columna de Tabla Accesible con caption y scope explícitos -->
-<div class="lg:col-span-7 bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
-<div class="overflow-x-auto">
-<table aria-label="Tabla de códigos de recaudación de tasas universitarias" class="w-full text-left border-collapse">
-<caption class="sr-only">Códigos oficiales de recaudación de tasas universitarias UNH en el Banco de la Nación</caption>
-<thead>
-<tr class="border-b-2 border-primary bg-surface-container-low text-primary">
-<th class="py-space-sm px-space-md font-label-lg text-label-lg" scope="col">Concepto del Servicio Académico / Trámite</th>
-<th class="py-space-sm px-space-md font-label-lg text-label-lg text-right" scope="col">Código BN</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-surface-container text-body-md font-body-md">
-<tr class="hover:bg-surface-container-low/50 transition-colors">
-<td class="py-space-xs px-space-md text-on-surface font-medium">Carnet Universitario (SUNEDU)</td>
-<td class="py-space-xs px-space-md text-right font-mono font-bold text-secondary">2631</td>
-</tr>
-<tr class="hover:bg-surface-container-low/50 transition-colors">
-<td class="py-space-xs px-space-md text-on-surface font-medium">Récord Académico de Notas</td>
-<td class="py-space-xs px-space-md text-right font-mono font-bold text-secondary">2632</td>
-</tr>
-<tr class="hover:bg-surface-container-low/50 transition-colors">
-<td class="py-space-xs px-space-md text-on-surface font-medium">Certificados Oficiales y Diplomas</td>
-<td class="py-space-xs px-space-md text-right font-mono font-bold text-secondary">2658</td>
-</tr>
-<tr class="hover:bg-surface-container-low/50 transition-colors">
-<td class="py-space-xs px-space-md text-on-surface font-medium">Centro de Idiomas (Matrícula y Módulos)</td>
-<td class="py-space-xs px-space-md text-right font-mono font-bold text-secondary">2666</td>
-</tr>
-<tr class="hover:bg-surface-container-low/50 transition-colors">
-<td class="py-space-xs px-space-md text-on-surface font-medium">Cursos Especiales y Actualización</td>
-<td class="py-space-xs px-space-md text-right font-mono font-bold text-secondary">2674</td>
-</tr>
-<tr class="hover:bg-surface-container-low/50 transition-colors">
-<td class="py-space-xs px-space-md text-on-surface font-medium">Derechos y Constancias Diversas</td>
-<td class="py-space-xs px-space-md text-right font-mono font-bold text-secondary">2704</td>
-</tr>
-<tr class="hover:bg-surface-container-low/50 transition-colors">
-<td class="py-space-xs px-space-md text-on-surface font-medium">Matrícula Regular Pregrado</td>
-<td class="py-space-xs px-space-md text-right font-mono font-bold text-secondary">2712</td>
-</tr>
-<tr class="hover:bg-surface-container-low/50 transition-colors">
-<td class="py-space-xs px-space-md text-on-surface font-medium">Centro Preuniversitario (CEPRE UNH)</td>
-<td class="py-space-xs px-space-md text-right font-mono font-bold text-secondary">3522</td>
-</tr>
-<tr class="hover:bg-surface-container-low/50 transition-colors">
-<td class="py-space-xs px-space-md text-on-surface font-medium">Derecho de Examen de Admisión</td>
-<td class="py-space-xs px-space-md text-right font-mono font-bold text-secondary">3530</td>
-</tr>
-<tr class="hover:bg-surface-container-low/50 transition-colors">
-<td class="py-space-xs px-space-md text-on-surface font-medium">Ceremonia de Grado de Bachiller y Títulos</td>
-<td class="py-space-xs px-space-md text-right font-mono font-bold text-secondary">3557</td>
-</tr>
-<tr class="hover:bg-surface-container-low/50 transition-colors">
-<td class="py-space-xs px-space-md text-on-surface font-medium">Pagos Varios Administrativos</td>
-<td class="py-space-xs px-space-md text-right font-mono font-bold text-secondary">2747</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section>
-<!-- SECCIÓN 7: Filiales y Sedes Descentralizadas -->
-<section aria-labelledby="seccion-sedes-filiales" class="w-full max-w-7xl mx-auto px-space-md lg:px-margin mt-space-xl">
-<div class="flex flex-col gap-space-xs mb-space-lg">
-<div class="flex items-center gap-space-xs text-secondary">
-<span aria-hidden="true" class="material-symbols-outlined text-[20px]">map</span>
-<span class="font-label-md text-label-md uppercase tracking-wider font-bold">Presencia Departamental</span>
-</div>
-<h2 class="font-headline-lg text-headline-lg text-primary" id="seccion-sedes-filiales">
-        Sedes Centrales y Filiales Universitarias
-      </h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl">
-        Conoce la ubicación de nuestros campus, facultades y módulos de atención descentralizada en el departamento de Huancavelica.
-      </p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
-<!-- Sede Paturpampa -->
-<article class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm border-t-4 border-primary flex flex-col justify-between">
-<div>
-<span class="inline-block px-space-xs py-0.5 rounded bg-sky-tint text-primary font-label-sm text-label-sm uppercase font-bold mb-space-xs">Sede Central</span>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Campus Paturpampa</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
-            Rectorado, Vicerrectorados, Facultades de Ingeniería, Enfermería, Ciencias de la Salud y Complejo de Servicios.
-          </p>
-<address class="font-body-sm text-body-sm text-on-surface not-italic flex items-start gap-space-xs mb-space-md">
-<span aria-hidden="true" class="material-symbols-outlined text-[18px] text-secondary mt-0.5">location_on</span>
-<span>Av. Agricultura N° 319 - 321, Sector Paturpampa, Huancavelica</span>
-</address>
-</div>
-<a aria-label="Ver detalles y directorio del Campus Universitario Paturpampa" class="inline-flex items-center gap-space-xs font-label-md text-label-md text-secondary hover:text-primary focus:outline-none focus:ring-2 focus:ring-secondary rounded" href="https://appunh.com/directorio">
-<span>Ver teléfonos y oficinas</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</a>
-</article>
-<!-- Filial Angaraes / Lircay -->
-<article class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm border-t-4 border-secondary flex flex-col justify-between">
-<div>
-<span class="inline-block px-space-xs py-0.5 rounded bg-sky-tint text-primary font-label-sm text-label-sm uppercase font-bold mb-space-xs">Filial Angaraes</span>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Campus Lircay</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
-            Facultad de Ingeniería de Minas, Ingeniería Civil e Ingeniería Ambiental con laboratorios especializados de mecánica de suelos.
-          </p>
-<address class="font-body-sm text-body-sm text-on-surface not-italic flex items-start gap-space-xs mb-space-md">
-<span aria-hidden="true" class="material-symbols-outlined text-[18px] text-secondary mt-0.5">location_on</span>
-<span>Av. Centenario N.º 1200, Barrio Pueblo Nuevo, Lircay</span>
-</address>
-</div>
-<a aria-label="Ver portal de la Filial Angaraes sede Lircay" class="inline-flex items-center gap-space-xs font-label-md text-label-md text-secondary hover:text-primary focus:outline-none focus:ring-2 focus:ring-secondary rounded" href="https://civil-lircay.unh.edu.pe">
-<span>Portal Filial Lircay</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</a>
-</article>
-<!-- Filial Acobamba -->
-<article class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm border-t-4 border-accent-gold flex flex-col justify-between">
-<div>
-<span class="inline-block px-space-xs py-0.5 rounded bg-[#FEF3C7] text-[#B45309] font-label-sm text-label-sm uppercase font-bold mb-space-xs">Filial Acobamba</span>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Ciencias Agrarias</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
-            Escuela Profesional de Agronomía, Agroindustrial y centros de experimentación agrícola para desarrollo rural andino.
-          </p>
-<address class="font-body-sm text-body-sm text-on-surface not-italic flex items-start gap-space-xs mb-space-md">
-<span aria-hidden="true" class="material-symbols-outlined text-[18px] text-secondary mt-0.5">location_on</span>
-<span>Av. Evitamiento Este S/N, Distrito y Provincia de Acobamba</span>
-</address>
-</div>
-<a aria-label="Ver información de la Facultad de Ciencias Agrarias en Acobamba" class="inline-flex items-center gap-space-xs font-label-md text-label-md text-secondary hover:text-primary focus:outline-none focus:ring-2 focus:ring-secondary rounded" href="https://fca.unh.edu.pe/">
-<span>Facultad Cs. Agrarias</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</a>
-</article>
-<!-- Filial Tayacaja / Pampas -->
-<article class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm border-t-4 border-civic-red flex flex-col justify-between">
-<div>
-<span class="inline-block px-space-xs py-0.5 rounded bg-surface-variant text-primary font-label-sm text-label-sm uppercase font-bold mb-space-xs">Filial Tayacaja</span>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Electrónica y Sistemas</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
-            E.P. de Ingeniería Electrónica e Ingeniería de Sistemas orientadas al desarrollo de software e innovación tecnológica.
-          </p>
-<address class="font-body-sm text-body-sm text-on-surface not-italic flex items-start gap-space-xs mb-space-md">
-<span aria-hidden="true" class="material-symbols-outlined text-[18px] text-secondary mt-0.5">location_on</span>
-<span>Jr. La Mar N° 755 (Pampas) y Cuadra 11 Av. Perú (Daniel Hernández)</span>
-</address>
-</div>
-<a aria-label="Ver portal de la Escuela de Sistemas en Pampas" class="inline-flex items-center gap-space-xs font-label-md text-label-md text-secondary hover:text-primary focus:outline-none focus:ring-2 focus:ring-secondary rounded" href="https://sistemas.unh.edu.pe">
-<span>Facultad de Electrónica</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</a>
-</article>
-</div>
-</section>
-<!-- SECCIÓN 8: Documentos de Gestión y Normativas Institucionales -->
-<section aria-labelledby="seccion-normativa" class="w-full max-w-7xl mx-auto px-space-md lg:px-margin mt-space-xl mb-space-xl">
-<div class="bg-primary text-on-primary rounded-2xl p-space-lg md:p-space-xl">
-<div class="max-w-3xl mb-space-lg">
-<span class="font-label-md text-label-md text-accent-gold uppercase tracking-wider font-bold">Transparencia Institucional</span>
-<h2 class="font-headline-lg text-headline-lg text-on-primary mt-1" id="seccion-normativa">
-          Documentos de Gestión y Marco Normativo
-        </h2>
-<p class="font-body-lg text-body-lg text-surface-variant mt-2">
-          Instrumentos normativos vigentes aprobados por Consejo Universitario para garantizar la legalidad y transparencia.
-        </p>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
-<!-- Doc 1: Estatuto -->
-<a class="bg-primary-container/80 hover:bg-secondary p-space-md rounded-xl transition-colors flex flex-col justify-between group focus:outline-none focus:ring-2 focus:ring-accent-gold" href="https://appunh.com/documentos/estatuto-de-la-universidad-nacional-de-huancavelica-1">
-<div>
-<span aria-hidden="true" class="material-symbols-outlined text-[32px] text-accent-gold mb-space-xs">gavel</span>
-<h3 class="font-headline-sm text-headline-sm text-on-primary mb-1">Estatuto Universitario</h3>
-<p class="font-body-sm text-body-sm text-surface-variant">Texto ordenado y actualizado acorde a la Ley 30220.</p>
-</div>
-<span class="inline-flex items-center gap-1 font-label-md text-label-md text-accent-gold group-hover:text-on-primary mt-space-sm">
-<span>Descargar PDF</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[16px]">download</span>
-</span>
-</a>
-<!-- Doc 2: ROF -->
-<a class="bg-primary-container/80 hover:bg-secondary p-space-md rounded-xl transition-colors flex flex-col justify-between group focus:outline-none focus:ring-2 focus:ring-accent-gold" href="https://appunh.com/documentos/reglamento-de-organizacion-y-funciones-2025">
-<div>
-<span aria-hidden="true" class="material-symbols-outlined text-[32px] text-accent-gold mb-space-xs">account_tree</span>
-<h3 class="font-headline-sm text-headline-sm text-on-primary mb-1">Reglamento (ROF)</h3>
-<p class="font-body-sm text-body-sm text-surface-variant">Organización y funciones de las unidades orgánicas.</p>
-</div>
-<span class="inline-flex items-center gap-1 font-label-md text-label-md text-accent-gold group-hover:text-on-primary mt-space-sm">
-<span>Consultar ROF</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[16px]">download</span>
-</span>
-</a>
-<!-- Doc 3: Modelo Educativo -->
-<a class="bg-primary-container/80 hover:bg-secondary p-space-md rounded-xl transition-colors flex flex-col justify-between group focus:outline-none focus:ring-2 focus:ring-accent-gold" href="https://drive.google.com/file/d/192L3EQv7StEasgALy8O7qawr83hd5PF5/view?usp=sharing">
-<div>
-<span aria-hidden="true" class="material-symbols-outlined text-[32px] text-accent-gold mb-space-xs">menu_book</span>
-<h3 class="font-headline-sm text-headline-sm text-on-primary mb-1">Modelo Educativo</h3>
-<p class="font-body-sm text-body-sm text-surface-variant">Res. N° 0762-2024-CU-UNH, enfoque por competencias.</p>
-</div>
-<span class="inline-flex items-center gap-1 font-label-md text-label-md text-accent-gold group-hover:text-on-primary mt-space-sm">
-<span>Ver Modelo</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[16px]">download</span>
-</span>
-</a>
-<!-- Doc 4: Grados y Títulos -->
-<a class="bg-primary-container/80 hover:bg-secondary p-space-md rounded-xl transition-colors flex flex-col justify-between group focus:outline-none focus:ring-2 focus:ring-accent-gold" href="https://appunh.com/storage/documento_multiples/wSQaEzAKa9azL1YcksPzpFuwdlLKpKKUlL9pjVMk.pdf">
-<div>
-<span aria-hidden="true" class="material-symbols-outlined text-[32px] text-accent-gold mb-space-xs">school</span>
-<h3 class="font-headline-sm text-headline-sm text-on-primary mb-1">Grados y Títulos</h3>
-<p class="font-body-sm text-body-sm text-surface-variant">Reglamento Versión 003, Res. N° 0430-2026-CU-UNH.</p>
-</div>
-<span class="inline-flex items-center gap-1 font-label-md text-label-md text-accent-gold group-hover:text-on-primary mt-space-sm">
-<span>Descargar Reglamento</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[16px]">download</span>
-</span>
-</a>
-</div>
-</div>
-</section>
-<!-- Script interactivo accesible para Carrusel y Pestañas -->
-<script>
+        </div>
+        <div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col gap-space-md">
+          <div aria-label="Pestañas de políticas institucionales" class="flex flex-wrap gap-space-xs border-b border-surface-container" role="tablist">
+            <!-- WAVE Fix: Manejo estricto de tabindex para soporte correcto de teclado -->
+            <button aria-controls="panel-iso-1" aria-selected="true" tabindex="0" class="tab-btn px-space-md py-space-sm font-label-lg font-bold text-primary border-b-2 border-primary focus:ring-2 rounded-t" id="tab-btn-1" role="tab">1. Alcance SGC</button>
+            <button aria-controls="panel-iso-2" aria-selected="false" tabindex="-1" class="tab-btn px-space-md py-space-sm font-label-lg font-medium text-on-surface-variant hover:text-primary focus:ring-2 rounded-t" id="tab-btn-2" role="tab">2. Política de Calidad</button>
+            <button aria-controls="panel-iso-3" aria-selected="false" tabindex="-1" class="tab-btn px-space-md py-space-sm font-label-lg font-medium text-on-surface-variant hover:text-primary focus:ring-2 rounded-t" id="tab-btn-3" role="tab">3. Gestión Ambiental</button>
+          </div>
+          <div aria-labelledby="tab-btn-1" class="tab-panel flex flex-col gap-space-md" id="panel-iso-1" role="tabpanel">
+            <p class="font-body-md">Aprobado para procesos de admisión y formación académica.</p>
+          </div>
+          <div aria-labelledby="tab-btn-2" class="tab-panel hidden flex flex-col gap-space-md" id="panel-iso-2" role="tabpanel">
+            <p class="font-body-md">Enfoque en la satisfacción de las necesidades estudiantiles.</p>
+          </div>
+          <div aria-labelledby="tab-btn-3" class="tab-panel hidden flex flex-col gap-space-md" id="panel-iso-3" role="tabpanel">
+            <p class="font-body-md">Compromiso con la ecoeficiencia universitaria.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
     (function() {
-      // 1. Carrusel de Avisos con control accesible de pausa
-      const slide1 = document.getElementById('slide-1');
-      const slide2 = document.getElementById('slide-2');
-      const btnPrev = document.getElementById('btn-carousel-prev');
-      const btnNext = document.getElementById('btn-carousel-next');
-      const btnPause = document.getElementById('btn-carousel-pause');
-      const indicator = document.getElementById('carousel-indicator');
-
-      let currentSlide = 1;
-      let isPaused = false;
-      let timer = null;
-
-      function updateCarousel(slideIndex) {
-        currentSlide = slideIndex;
-        if (slideIndex === 1) {
-          slide1.classList.remove('hidden');
-          slide1.classList.add('block');
-          slide2.classList.remove('block');
-          slide2.classList.add('hidden');
-          indicator.textContent = 'Aviso 1 de 2';
-        } else {
-          slide2.classList.remove('hidden');
-          slide2.classList.add('block');
-          slide1.classList.remove('block');
-          slide1.classList.add('hidden');
-          indicator.textContent = 'Aviso 2 de 2';
-        }
-      }
-
-      function nextSlide() {
-        const next = currentSlide === 1 ? 2 : 1;
-        updateCarousel(next);
-      }
-
-      function prevSlide() {
-        const prev = currentSlide === 1 ? 2 : 1;
-        updateCarousel(prev);
-      }
-
-      btnNext.addEventListener('click', nextSlide);
-      btnPrev.addEventListener('click', prevSlide);
-
-      btnPause.addEventListener('click', function() {
-        isPaused = !isPaused;
-        if (isPaused) {
-          clearInterval(timer);
-          btnPause.innerHTML = '<span class="material-symbols-outlined text-[20px]" aria-hidden="true">play_arrow</span><span class="hidden sm:inline">Reanudar</span>';
-          btnPause.setAttribute('aria-label', 'Reanudar rotación automática de anuncios');
-        } else {
-          startAutoPlay();
-          btnPause.innerHTML = '<span class="material-symbols-outlined text-[20px]" aria-hidden="true">pause</span><span class="hidden sm:inline">Pausar</span>';
-          btnPause.setAttribute('aria-label', 'Pausar rotación automática de anuncios');
-        }
-      });
-
-      function startAutoPlay() {
-        clearInterval(timer);
-        timer = setInterval(function() {
-          if (!isPaused) {
-            nextSlide();
-          }
-        }, 7000);
-      }
-      startAutoPlay();
-
-      // 2. Sistema de Pestañas de Calidad ISO
+      // Configuración accesible de Pestañas ARIA
       const tabs = [
         document.getElementById('tab-btn-1'),
         document.getElementById('tab-btn-2'),
@@ -909,13 +225,16 @@
       tabs.forEach((tab, idx) => {
         tab.addEventListener('click', () => {
           tabs.forEach((t, i) => {
-            if (i === idx) {
-              t.setAttribute('aria-selected', 'true');
+            const isSelected = i === idx;
+            t.setAttribute('aria-selected', isSelected.toString());
+            // WAVE Fix: Modificando el tabindex dinámicamente para que el usuario de Screen Reader no atraviese cada pestaña inactiva
+            t.setAttribute('tabindex', isSelected ? '0' : '-1');
+            
+            if (isSelected) {
               t.classList.add('font-bold', 'text-primary', 'border-b-2', 'border-primary');
               t.classList.remove('text-on-surface-variant', 'font-medium');
               panels[i].classList.remove('hidden');
             } else {
-              t.setAttribute('aria-selected', 'false');
               t.classList.remove('font-bold', 'text-primary', 'border-b-2', 'border-primary');
               t.classList.add('text-on-surface-variant', 'font-medium');
               panels[i].classList.add('hidden');
@@ -923,7 +242,6 @@
           });
         });
 
-        // Soporte de navegación por teclado en pestañas (flechas)
         tab.addEventListener('keydown', (e) => {
           let targetTab = null;
           if (e.key === 'ArrowRight') {
@@ -932,6 +250,7 @@
             targetTab = tabs[(idx - 1 + tabs.length) % tabs.length];
           }
           if (targetTab) {
+            e.preventDefault();
             targetTab.focus();
             targetTab.click();
           }
@@ -939,4 +258,5 @@
       });
     })();
   </script>
-</div></main><footer class="w-full bg-primary text-on-primary mt-space-xl pt-space-xl pb-space-lg" role="contentinfo"><div class="max-w-7xl mx-auto px-space-md lg:px-margin grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg"><div class="flex flex-col gap-space-sm"><div class="flex items-center gap-space-sm"><img alt="Universidad Nacional de Huancavelica - ISO 9001, 14001, 21001 Certificada" class="h-8 w-auto object-contain brightness-0 invert" src="https://lh3.googleusercontent.com/aida/AEtjO1UCWIIxo3lzO_nwmHhNcuTCKcr6hwavaLCURt2rwB5cAP5Pt0JaJyaNF-TQq7QsNtopPvI6aBg8GjgckDanShWv4OD7sgpOOXUnqfvjTjNFMGS7TDC9Y0OP8IHCK_AwlBuZsdou2aV187jgUziVKQBUPycdsdCOlUkrQusp6IyU8m1jC3YC8kS8ZcoZ29mNDsQgfgKVjJjb3FEL6Mo_-9g1CnZa6Inzp5HUxrN6qOO8T31bdMM4UbWvGg"/><span class="font-headline-sm text-headline-sm text-on-primary">UNH</span></div><p class="font-body-sm text-body-sm text-surface-variant">Institución pública licenciada por SUNEDU y certificada internacionalmente bajo normas ISO 9001, 14001 y 21001.</p><p class="font-label-sm text-label-sm text-accent-gold">Licenciamiento Institucional Resolución N° 098-2019-SUNEDU/CD</p></div><div class="flex flex-col gap-space-xs"><h2 class="font-headline-sm text-headline-sm text-on-primary mb-space-xs">Sedes y Filiales</h2><p class="font-body-sm text-body-sm text-surface-variant"><strong class="text-on-primary">Sede Central:</strong> Ciudad Universitaria Paturpampa s/n, Huancavelica</p><p class="font-body-sm text-body-sm text-surface-variant"><strong class="text-on-primary">Filial Acobamba:</strong> Jr. Bolognesi s/n, Acobamba</p><p class="font-body-sm text-body-sm text-surface-variant"><strong class="text-on-primary">Filial Angaraes:</strong> Av. 28 de Julio s/n, Lircay</p><p class="font-body-sm text-body-sm text-surface-variant"><strong class="text-on-primary">Filial Castrovirreyna:</strong> Av. Independencia s/n, Ticrapo</p></div><div class="flex flex-col gap-space-xs"><h2 class="font-headline-sm text-headline-sm text-on-primary mb-space-xs">Accesibilidad y Legal</h2><nav aria-label="Enlaces legales y de accesibilidad"><ul class="list-none m-0 p-0 flex flex-col gap-space-xs"><li><a aria-label="Consultar Declaración de Accesibilidad Web" class="font-body-sm text-body-sm text-surface-variant hover:text-on-primary transition-colors" data-path="declaracion-accesibilidad" href="#">Declaración de Accesibilidad Web</a></li><li><a aria-label="Ver el mapa estructurado del portal" class="font-body-sm text-body-sm text-surface-variant hover:text-on-primary transition-colors" data-path="mapa-del-sitio" href="#">Mapa del Sitio Accesible</a></li><li><a aria-label="Acceder al Libro de Reclamaciones Virtual" class="font-body-sm text-body-sm text-surface-variant hover:text-on-primary transition-colors" data-path="libro-de-reclamaciones" href="#">Libro de Reclamaciones Virtual</a></li><li><a aria-label="Políticas de privacidad y protección de datos" class="font-body-sm text-body-sm text-surface-variant hover:text-on-primary transition-colors" data-path="politicas-de-privacidad" href="#">Políticas de Privacidad</a></li></ul></nav></div><div class="flex flex-col gap-space-sm"><h2 class="font-headline-sm text-headline-sm text-on-primary">Canales de Atención</h2><p class="font-body-sm text-body-sm text-surface-variant">Central Telefónica: (067) 451450</p><p class="font-body-sm text-body-sm text-surface-variant">Mesa de Ayuda: mesadepartes@unh.edu.pe</p><div class="flex items-center gap-space-sm pt-space-xs"><a aria-label="Visitar página oficial de Facebook de la UNH" class="p-space-xs bg-primary-container text-on-primary hover:bg-secondary rounded transition-colors" href="https://facebook.com" rel="noopener noreferrer" target="_blank"><span aria-hidden="true" class="material-symbols-outlined text-[18px]">public</span></a><a aria-label="Visitar canal oficial de YouTube de la UNH" class="p-space-xs bg-primary-container text-on-primary hover:bg-secondary rounded transition-colors" href="https://youtube.com" rel="noopener noreferrer" target="_blank"><span aria-hidden="true" class="material-symbols-outlined text-[18px]">smart_display</span></a><a aria-label="Visitar perfil oficial de LinkedIn de la UNH" class="p-space-xs bg-primary-container text-on-primary hover:bg-secondary rounded transition-colors" href="https://linkedin.com" rel="noopener noreferrer" target="_blank"><span aria-hidden="true" class="material-symbols-outlined text-[18px]">share</span></a></div></div></div><div class="max-w-7xl mx-auto px-space-md lg:px-margin mt-space-lg pt-space-md border-t border-primary-container flex flex-col sm:flex-row items-center justify-between gap-space-sm text-surface-variant font-label-sm text-label-sm"><p>© 2024 Universidad Nacional de Huancavelica. Todos los derechos reservados.</p><p class="text-accent-gold">Conformidad WCAG 2.1 Nivel AA / AAA</p></div></footer></body></html>
+</body>
+</html>
