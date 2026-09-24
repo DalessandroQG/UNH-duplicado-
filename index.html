@@ -23,7 +23,7 @@
     <header class="border-b border-gray-200">
         <div class="bg-[#0f172a] text-slate-300 text-xs py-2 px-4 md:px-12 flex justify-between items-center">
             <div class="flex items-center space-x-6">
-                <a aria-label="Enviar correo a trámite documentario" href="mailto:tramitedocumentario@unh.edu.pe" class="flex items-center hover:text-white transition">
+                <a aria-label="Enviar correo a trámite documentario" href="mailto:tramitedocumentario@unh.edu.pe" class="flex items-center hover:text-white transition focus:ring-2 focus:ring-blue-400 rounded">
                     <i aria-hidden="true" class="fa-regular fa-envelope mr-2 text-blue-400"></i>
                     tramitedocumentario@unh.edu.pe
                 </a>
@@ -33,18 +33,18 @@
                 </span>
             </div>
             <div class="flex items-center space-x-4">
-                <a href="https://sgd2.unh.edu.pe/mpd/inicio.do#" target="_blank" class="hover:text-white transition flex items-center">
+                <a href="https://sgd2.unh.edu.pe/mpd/inicio.do#" target="_blank" class="hover:text-white transition flex items-center focus:ring-2 focus:ring-blue-400 rounded">
                     <i aria-hidden="true" class="fa-solid fa-file-signature mr-1.5"></i> Trámite Documentario
                 </a>
                 <span aria-hidden="true" class="text-slate-600">|</span>
-                <a href="https://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=10440" target="_blank" class="hover:text-white transition flex items-center">
+                <a href="https://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=10440" target="_blank" class="hover:text-white transition flex items-center focus:ring-2 focus:ring-blue-400 rounded">
                     <i aria-hidden="true" class="fa-solid fa-shield-halved mr-1.5 text-emerald-400"></i> Portal de Transparencia
                 </a>
                 <div class="hidden sm:flex items-center space-x-2 pl-3 border-l border-slate-700">
-                    <a aria-label="Visitar página oficial de Facebook de la UNH" href="https://www.facebook.com/universidadunh" target="_blank" class="w-6 h-6 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 transition text-white">
+                    <a aria-label="Visitar página oficial de Facebook de la UNH" href="https://www.facebook.com/universidadunh" target="_blank" class="w-6 h-6 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 transition text-white focus:ring-2 focus:ring-blue-400">
                         <i aria-hidden="true" class="fa-brands fa-facebook-f text-xs"></i>
                     </a>
-                    <a aria-label="Visitar canal oficial de YouTube de la UNH" href="https://www.youtube.com/channel/UCU1xRWArgbVQR9qUM7j6J5Q" target="_blank" class="w-6 h-6 rounded-full bg-slate-800 flex items-center justify-center hover:bg-red-600 transition text-white">
+                    <a aria-label="Visitar canal oficial de YouTube de la UNH" href="https://www.youtube.com/channel/UCU1xRWArgbVQR9qUM7j6J5Q" target="_blank" class="w-6 h-6 rounded-full bg-slate-800 flex items-center justify-center hover:bg-red-600 transition text-white focus:ring-2 focus:ring-blue-400">
                         <i aria-hidden="true" class="fa-brands fa-youtube text-xs"></i>
                     </a>
                 </div>
@@ -71,8 +71,8 @@
                 <!-- Formulario accesible WAVE -->
                 <form role="search" aria-label="Buscador institucional" class="relative w-64">
                     <label for="buscador-header" class="sr-only">Buscar en UNH</label>
-                    <input id="buscador-header" type="search" placeholder="Buscar en UNH..." class="w-full bg-slate-100 border border-slate-300 text-xs rounded-full py-2.5 pl-4 pr-10 focus:outline-none focus:border-blue-900 focus:bg-white transition text-slate-800">
-                    <button type="submit" aria-label="Ejecutar búsqueda" class="absolute right-3 top-3 text-slate-600 hover:text-blue-900">
+                    <input id="buscador-header" type="search" placeholder="Buscar en UNH..." class="w-full bg-slate-100 border border-slate-300 text-xs rounded-full py-2.5 pl-4 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-900 focus:bg-white transition text-slate-800">
+                    <button type="submit" aria-label="Ejecutar búsqueda" class="absolute right-3 top-3 text-slate-600 hover:text-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-900 rounded">
                         <i aria-hidden="true" class="fa-solid fa-magnifying-glass text-xs"></i>
                     </button>
                 </form>
@@ -83,17 +83,23 @@
         <nav aria-label="Navegación principal" class="bg-[#0b2545] text-white px-4 md:px-12 text-xs md:text-sm font-semibold tracking-wide">
             <div class="flex justify-between items-center">
                 <div class="flex flex-wrap items-center">
-                    <a href="#inicio" class="py-3 px-4 bg-blue-900/60 text-amber-400 border-b-2 border-amber-400">INICIO</a>
-                    <a href="#universidad" class="py-3 px-4 hover:bg-white/10 flex items-center space-x-1">
+                    <a href="#inicio" class="py-3 px-4 bg-blue-900/60 text-amber-400 border-b-2 border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400">INICIO</a>
+                    <a href="#universidad" class="py-3 px-4 hover:bg-white/10 flex items-center space-x-1 focus:outline-none focus:ring-2 focus:ring-white">
                         <span>Universidad</span>
                         <i aria-hidden="true" class="fa-solid fa-chevron-down text-xs ml-1"></i>
                     </a>
-                    <a href="#pregrado" class="py-3 px-4 hover:bg-white/10">Pregrado</a>
-                    <a href="#posgrado" class="py-3 px-4 hover:bg-white/10">Posgrado</a>
-                    <a href="#investigacion" class="py-3 px-4 hover:bg-white/10">Investigación</a>
-                    <a href="#convocatorias" class="py-3 px-4 hover:bg-white/10">Convocatorias</a>
+                    <a href="#autoridades" class="py-3 px-4 hover:bg-white/10 flex items-center space-x-1 focus:outline-none focus:ring-2 focus:ring-white">
+                        <span>Autoridades</span>
+                        <i aria-hidden="true" class="fa-solid fa-chevron-down text-xs ml-1"></i>
+                    </a>
+                    <a href="#pregrado" class="py-3 px-4 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white">Pregrado</a>
+                    <a href="#posgrado" class="py-3 px-4 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white">Posgrado</a>
+                    <a href="#investigacion" class="py-3 px-4 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white">Investigación</a>
+                    <a href="#convocatorias" class="py-3 px-4 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white">Convocatorias</a>
+                    <a href="#tramite" class="py-3 px-4 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white">Trámite</a>
+                    <a href="#transparencia" class="py-3 px-4 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white">Transparencia</a>
                 </div>
-                <a href="https://virtual.unh.edu.pe/" target="_blank" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-2 rounded text-xs uppercase flex items-center space-x-2 transition my-1.5 shadow-sm">
+                <a href="https://virtual.unh.edu.pe/" target="_blank" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-2 rounded text-xs uppercase flex items-center space-x-2 transition my-1.5 shadow-sm focus:outline-none focus:ring-2 focus:ring-white">
                     <i aria-hidden="true" class="fa-solid fa-user-graduate"></i>
                     <span>Campus Virtual</span>
                 </a>
@@ -104,7 +110,6 @@
     <!-- 4. HERO BANNER -->
     <section aria-labelledby="hero-title" class="relative bg-slate-900 overflow-hidden">
         <div class="relative w-full h-[320px] md:h-[480px]">
-            <!-- Asegúrate de usar una imagen con buen contraste o mantenemos el overlay oscuro -->
             <img src="https://www.unh.edu.pe/wp-content/uploads/2026/05/FLYER-CARRUSEL-scaled.jpeg" alt="Presentación del Fondo Editorial UNH" class="w-full h-full object-cover object-center">
             <div class="absolute inset-0 bg-gradient-to-r from-blue-950/90 via-blue-950/60 to-transparent flex items-center px-8 md:px-20">
                 <div class="max-w-xl text-white">
@@ -112,8 +117,8 @@
                     <h1 id="hero-title" class="text-3xl md:text-5xl font-extrabold leading-tight mb-3">Publica tu Libro con la Universidad</h1>
                     <p class="text-slate-100 text-sm md:text-base font-light mb-6">Impulsa tu carrera docente con el respaldo del Vicerrectorado de Investigación y Fondo Editorial UNH.</p>
                     <div class="flex space-x-3">
-                        <a href="https://www.unh.edu.pe/publica-tu-libro/" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs uppercase px-6 py-3 rounded-lg shadow-lg transition">Ver Convocatoria</a>
-                        <a href="#bases" class="bg-slate-800/80 hover:bg-slate-700/80 border border-slate-500 backdrop-blur-md text-white font-bold text-xs uppercase px-6 py-3 rounded-lg transition">Bases Generales</a>
+                        <a href="https://www.unh.edu.pe/publica-tu-libro/" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs uppercase px-6 py-3 rounded-lg shadow-lg transition focus:outline-none focus:ring-2 focus:ring-white">Ver Convocatoria</a>
+                        <a href="#bases" class="bg-slate-800/80 hover:bg-slate-700/80 border border-slate-500 backdrop-blur-md text-white font-bold text-xs uppercase px-6 py-3 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-white">Bases Generales</a>
                     </div>
                 </div>
             </div>
@@ -129,41 +134,77 @@
                 <p class="text-slate-600 text-sm mt-3">Acceso directo a las plataformas y herramientas digitales institucionales</p>
             </div>
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                <a href="http://sigaweb.unh.edu.pe:9007/" target="_blank" class="flex flex-col items-center justify-center p-4 rounded-xl border border-gray-300 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 transition group text-center shadow-sm">
+                <a href="http://sigaweb.unh.edu.pe:9007/" target="_blank" class="flex flex-col items-center justify-center p-4 rounded-xl border border-gray-300 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 transition group text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-900">
                     <div aria-hidden="true" class="w-12 h-12 rounded-full bg-blue-100 text-blue-900 flex items-center justify-center text-xl mb-2.5 group-hover:scale-110 transition">
                         <i class="fa-solid fa-server"></i>
                     </div>
                     <span class="text-xs font-bold text-slate-800 group-hover:text-blue-900 uppercase">SIGA WEB</span>
                 </a>
-                <a href="https://virtual.unh.edu.pe/" target="_blank" class="flex flex-col items-center justify-center p-4 rounded-xl border border-gray-300 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 transition group text-center shadow-sm">
+                <a href="https://virtual.unh.edu.pe/" target="_blank" class="flex flex-col items-center justify-center p-4 rounded-xl border border-gray-300 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 transition group text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-900">
                     <div aria-hidden="true" class="w-12 h-12 rounded-full bg-blue-100 text-blue-900 flex items-center justify-center text-xl mb-2.5 group-hover:scale-110 transition">
                         <i class="fa-solid fa-chalkboard-user"></i>
                     </div>
                     <span class="text-xs font-bold text-slate-800 group-hover:text-blue-900 uppercase">Campus Virtual</span>
                 </a>
-                <a href="https://sisacad2.unh.edu.pe/" target="_blank" class="flex flex-col items-center justify-center p-4 rounded-xl border border-gray-300 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 transition group text-center shadow-sm">
+                <a href="https://sisacad2.unh.edu.pe/" target="_blank" class="flex flex-col items-center justify-center p-4 rounded-xl border border-gray-300 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 transition group text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-900">
                     <div aria-hidden="true" class="w-12 h-12 rounded-full bg-blue-100 text-blue-900 flex items-center justify-center text-xl mb-2.5 group-hover:scale-110 transition">
                         <i class="fa-solid fa-graduation-cap"></i>
                     </div>
                     <span class="text-xs font-bold text-slate-800 group-hover:text-blue-900 uppercase">SISACAD</span>
                 </a>
-                <a href="https://www.unh.edu.pe/certificado-de-similitud/" class="flex flex-col items-center justify-center p-4 rounded-xl border border-gray-300 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 transition group text-center shadow-sm">
+                <a href="https://www.unh.edu.pe/certificado-de-similitud/" class="flex flex-col items-center justify-center p-4 rounded-xl border border-gray-300 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 transition group text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-900">
                     <div aria-hidden="true" class="w-12 h-12 rounded-full bg-blue-100 text-blue-900 flex items-center justify-center text-xl mb-2.5 group-hover:scale-110 transition">
                         <i class="fa-solid fa-shield-virus"></i>
                     </div>
                     <span class="text-xs font-bold text-slate-800 group-hover:text-blue-900 uppercase">Certificados Similitud</span>
                 </a>
-                <a href="https://appunh.com/biblioteca" target="_blank" class="flex flex-col items-center justify-center p-4 rounded-xl border border-gray-300 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 transition group text-center shadow-sm">
+                <a href="https://www.unh.edu.pe/oficina-de-relaciones-exteriores/" class="flex flex-col items-center justify-center p-4 rounded-xl border border-gray-300 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 transition group text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-900">
+                    <div aria-hidden="true" class="w-12 h-12 rounded-full bg-blue-100 text-blue-900 flex items-center justify-center text-xl mb-2.5 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-earth-americas"></i>
+                    </div>
+                    <span class="text-xs font-bold text-slate-800 group-hover:text-blue-900 uppercase">Relaciones Inter.</span>
+                </a>
+                <a href="https://appunh.com/biblioteca" target="_blank" class="flex flex-col items-center justify-center p-4 rounded-xl border border-gray-300 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 transition group text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-900">
                     <div aria-hidden="true" class="w-12 h-12 rounded-full bg-blue-100 text-blue-900 flex items-center justify-center text-xl mb-2.5 group-hover:scale-110 transition">
                         <i class="fa-solid fa-book-bookmark"></i>
                     </div>
                     <span class="text-xs font-bold text-slate-800 group-hover:text-blue-900 uppercase">Biblioteca Virtual</span>
                 </a>
-                <a href="https://www.admisionunh.edu.pe/" target="_blank" class="flex flex-col items-center justify-center p-4 rounded-xl border border-gray-300 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 transition group text-center shadow-sm">
+                <a href="https://idiomas.unh.edu.pe/" target="_blank" class="flex flex-col items-center justify-center p-4 rounded-xl border border-gray-300 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 transition group text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-900">
+                    <div aria-hidden="true" class="w-12 h-12 rounded-full bg-blue-100 text-blue-900 flex items-center justify-center text-xl mb-2.5 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-language"></i>
+                    </div>
+                    <span class="text-xs font-bold text-slate-800 group-hover:text-blue-900 uppercase">Centro Idiomas</span>
+                </a>
+                <a href="https://www.cepreunh.edu.pe/" target="_blank" class="flex flex-col items-center justify-center p-4 rounded-xl border border-gray-300 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 transition group text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-900">
+                    <div aria-hidden="true" class="w-12 h-12 rounded-full bg-blue-100 text-blue-900 flex items-center justify-center text-xl mb-2.5 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <span class="text-xs font-bold text-slate-800 group-hover:text-blue-900 uppercase">CEPRE</span>
+                </a>
+                <a href="https://www.admisionunh.edu.pe/" target="_blank" class="flex flex-col items-center justify-center p-4 rounded-xl border border-gray-300 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 transition group text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-900">
                     <div aria-hidden="true" class="w-12 h-12 rounded-full bg-blue-100 text-blue-900 flex items-center justify-center text-xl mb-2.5 group-hover:scale-110 transition">
                         <i class="fa-solid fa-id-card"></i>
                     </div>
                     <span class="text-xs font-bold text-slate-800 group-hover:text-blue-900 uppercase">Admisión</span>
+                </a>
+                <a href="https://appunh.com/directorio" target="_blank" class="flex flex-col items-center justify-center p-4 rounded-xl border border-gray-300 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 transition group text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-900">
+                    <div aria-hidden="true" class="w-12 h-12 rounded-full bg-blue-100 text-blue-900 flex items-center justify-center text-xl mb-2.5 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-phone-volume"></i>
+                    </div>
+                    <span class="text-xs font-bold text-slate-800 group-hover:text-blue-900 uppercase">Directorio</span>
+                </a>
+                <a href="https://revistas.unh.edu.pe/" target="_blank" class="flex flex-col items-center justify-center p-4 rounded-xl border border-gray-300 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 transition group text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-900">
+                    <div aria-hidden="true" class="w-12 h-12 rounded-full bg-blue-100 text-blue-900 flex items-center justify-center text-xl mb-2.5 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-newspaper"></i>
+                    </div>
+                    <span class="text-xs font-bold text-slate-800 group-hover:text-blue-900 uppercase">Revistas UNH</span>
+                </a>
+                <a href="https://www.unh.edu.pe/ugrati/" class="flex flex-col items-center justify-center p-4 rounded-xl border border-gray-300 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 transition group text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-900">
+                    <div aria-hidden="true" class="w-12 h-12 rounded-full bg-blue-100 text-blue-900 flex items-center justify-center text-xl mb-2.5 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+                    <span class="text-xs font-bold text-slate-800 group-hover:text-blue-900 uppercase">Grados y Títulos</span>
                 </a>
             </div>
         </div>
@@ -176,19 +217,19 @@
             <div class="w-12 h-1 bg-amber-500 mx-auto mt-2"></div>
         </div>
         <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <a href="https://sites.google.com/unh.edu.pe/sgd-unh/inicio" target="_blank" class="bg-white p-5 rounded-xl border border-gray-300 shadow-sm hover:shadow-md transition text-center flex flex-col items-center">
+            <a href="https://sites.google.com/unh.edu.pe/sgd-unh/inicio" target="_blank" class="bg-white p-5 rounded-xl border border-gray-300 shadow-sm hover:shadow-md transition text-center flex flex-col items-center focus:outline-none focus:ring-2 focus:ring-blue-900">
                 <i aria-hidden="true" class="fa-regular fa-folder-open text-2xl text-blue-900 mb-2"></i>
                 <span class="text-xs font-bold text-slate-800 uppercase">Manual SGD</span>
             </a>
-            <a href="https://sgd2.unh.edu.pe/verifica/inicio.do" target="_blank" class="bg-white p-5 rounded-xl border border-gray-300 shadow-sm hover:shadow-md transition text-center flex flex-col items-center">
+            <a href="https://sgd2.unh.edu.pe/verifica/inicio.do" target="_blank" class="bg-white p-5 rounded-xl border border-gray-300 shadow-sm hover:shadow-md transition text-center flex flex-col items-center focus:outline-none focus:ring-2 focus:ring-blue-900">
                 <i aria-hidden="true" class="fa-solid fa-file-circle-check text-2xl text-blue-900 mb-2"></i>
                 <span class="text-xs font-bold text-slate-800 uppercase">Verificador de Firmas</span>
             </a>
-            <a href="https://sgd2.unh.edu.pe/consulta/inicio.do" target="_blank" class="bg-white p-5 rounded-xl border border-gray-300 shadow-sm hover:shadow-md transition text-center flex flex-col items-center">
+            <a href="https://sgd2.unh.edu.pe/consulta/inicio.do" target="_blank" class="bg-white p-5 rounded-xl border border-gray-300 shadow-sm hover:shadow-md transition text-center flex flex-col items-center focus:outline-none focus:ring-2 focus:ring-blue-900">
                 <i aria-hidden="true" class="fa-solid fa-magnifying-glass-location text-2xl text-blue-900 mb-2"></i>
                 <span class="text-xs font-bold text-slate-800 uppercase">Consulta de Trámite</span>
             </a>
-            <a href="https://sgd2.unh.edu.pe/mpd/inicio.do#" target="_blank" class="bg-white p-5 rounded-xl border border-gray-300 shadow-sm hover:shadow-md transition text-center flex flex-col items-center">
+            <a href="https://sgd2.unh.edu.pe/mpd/inicio.do#" target="_blank" class="bg-white p-5 rounded-xl border border-gray-300 shadow-sm hover:shadow-md transition text-center flex flex-col items-center focus:outline-none focus:ring-2 focus:ring-blue-900">
                 <i aria-hidden="true" class="fa-solid fa-inbox text-2xl text-blue-900 mb-2"></i>
                 <span class="text-xs font-bold text-slate-800 uppercase">Mesa de Partes Digital</span>
             </a>
@@ -212,7 +253,7 @@
                         <h3 class="font-bold text-slate-800 text-xs mb-1">CONVOCATORIA CAS</h3>
                         <p class="text-xs text-slate-600 mb-4 font-medium">D.L. 1057</p>
                     </div>
-                    <a aria-label="Ingresar a la convocatoria CAS" href="https://www.unh.edu.pe/convocatorias-cas/" class="bg-[#0b2545] hover:bg-blue-900 text-white font-bold text-xs py-2 rounded uppercase tracking-wider">Ingrese</a>
+                    <a aria-label="Ingresar a la convocatoria CAS" href="https://www.unh.edu.pe/convocatorias-cas/" class="bg-[#0b2545] hover:bg-blue-900 text-white font-bold text-xs py-2 rounded uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-blue-900">Ingrese</a>
                 </div>
                 <div class="border border-gray-300 rounded-xl p-5 bg-slate-50 flex flex-col justify-between text-center hover:border-blue-900 transition">
                     <div>
@@ -222,7 +263,7 @@
                         <h3 class="font-bold text-slate-800 text-xs mb-1">NOMBRAMIENTO DOCENTE</h3>
                         <p class="text-xs text-slate-600 mb-4 font-medium">Ley Nº 31349</p>
                     </div>
-                    <a aria-label="Ingresar al nombramiento docente" href="https://www.unh.edu.pe/nombramiento_docente_2025/" class="bg-[#0b2545] hover:bg-blue-900 text-white font-bold text-xs py-2 rounded uppercase tracking-wider">Ingrese</a>
+                    <a aria-label="Ingresar al nombramiento docente" href="https://www.unh.edu.pe/nombramiento_docente_2025/" class="bg-[#0b2545] hover:bg-blue-900 text-white font-bold text-xs py-2 rounded uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-blue-900">Ingrese</a>
                 </div>
                 <div class="border border-gray-300 rounded-xl p-5 bg-slate-50 flex flex-col justify-between text-center hover:border-blue-900 transition">
                     <div>
@@ -232,7 +273,7 @@
                         <h3 class="font-bold text-slate-800 text-xs mb-1">CONCURSO PÚBLICO</h3>
                         <p class="text-xs text-slate-600 mb-4 font-medium">Docentes Contratados</p>
                     </div>
-                    <a aria-label="Ingresar al concurso público" href="https://www.unh.edu.pe/concurso-publico-de-meritos-d-l-276/" class="bg-[#0b2545] hover:bg-blue-900 text-white font-bold text-xs py-2 rounded uppercase tracking-wider">Ingrese</a>
+                    <a aria-label="Ingresar al concurso público" href="https://www.unh.edu.pe/concurso-publico-de-meritos-d-l-276/" class="bg-[#0b2545] hover:bg-blue-900 text-white font-bold text-xs py-2 rounded uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-blue-900">Ingrese</a>
                 </div>
                 <div class="border border-gray-300 rounded-xl p-5 bg-slate-50 flex flex-col justify-between text-center hover:border-blue-900 transition">
                     <div>
@@ -242,7 +283,7 @@
                         <h3 class="font-bold text-slate-800 text-xs mb-1">PRÁCTICAS</h3>
                         <p class="text-xs text-slate-600 mb-4 font-medium">Egresados UNH</p>
                     </div>
-                    <a aria-label="Ingresar a convocatorias de prácticas" href="https://www.unh.edu.pe/convocatoria-practicas-profesionales/" class="bg-[#0b2545] hover:bg-blue-900 text-white font-bold text-xs py-2 rounded uppercase tracking-wider">Ingrese</a>
+                    <a aria-label="Ingresar a convocatorias de prácticas" href="https://www.unh.edu.pe/convocatoria-practicas-profesionales/" class="bg-[#0b2545] hover:bg-blue-900 text-white font-bold text-xs py-2 rounded uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-blue-900">Ingrese</a>
                 </div>
                 <div class="border border-gray-300 rounded-xl p-5 bg-slate-50 flex flex-col justify-between text-center hover:border-blue-900 transition">
                     <div>
@@ -252,7 +293,7 @@
                         <h3 class="font-bold text-slate-800 text-xs mb-1">PROMOCIÓN DOCENTE</h3>
                         <p class="text-xs text-slate-600 mb-4 font-medium">Proceso Extraordinario</p>
                     </div>
-                    <a aria-label="Ingresar a la promoción docente" href="https://www.unh.edu.pe/promocion-docente-automatica/" class="bg-[#0b2545] hover:bg-blue-900 text-white font-bold text-xs py-2 rounded uppercase tracking-wider">Ingrese</a>
+                    <a aria-label="Ingresar a la promoción docente" href="https://www.unh.edu.pe/promocion-docente-automatica/" class="bg-[#0b2545] hover:bg-blue-900 text-white font-bold text-xs py-2 rounded uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-blue-900">Ingrese</a>
                 </div>
             </div>
         </div>
@@ -277,7 +318,7 @@
                         </div>
                     </div>
                     <div class="p-4 pt-0">
-                        <a aria-label="Leer más sobre la Ceremonia Cívica Tayacaja" href="#noticia1" class="text-blue-800 font-bold text-xs hover:text-amber-700 flex items-center">
+                        <a aria-label="Leer más sobre la Ceremonia Cívica Tayacaja" href="#noticia1" class="text-blue-800 font-bold text-xs hover:text-amber-700 flex items-center focus:outline-none focus:ring-2 focus:ring-blue-800 rounded">
                             Leer más <i aria-hidden="true" class="fa-solid fa-arrow-right ml-1 text-xs"></i>
                         </a>
                     </div>
@@ -292,7 +333,7 @@
                         </div>
                     </div>
                     <div class="p-4 pt-0">
-                        <a aria-label="Leer más sobre innovación educativa EDUIA" href="#noticia2" class="text-blue-800 font-bold text-xs hover:text-amber-700 flex items-center">
+                        <a aria-label="Leer más sobre innovación educativa EDUIA" href="#noticia2" class="text-blue-800 font-bold text-xs hover:text-amber-700 flex items-center focus:outline-none focus:ring-2 focus:ring-blue-800 rounded">
                             Leer más <i aria-hidden="true" class="fa-solid fa-arrow-right ml-1 text-xs"></i>
                         </a>
                     </div>
@@ -307,7 +348,7 @@
                         </div>
                     </div>
                     <div class="p-4 pt-0">
-                        <a aria-label="Leer más sobre el CEPRE UNH" href="#noticia3" class="text-blue-800 font-bold text-xs hover:text-amber-700 flex items-center">
+                        <a aria-label="Leer más sobre el CEPRE UNH" href="#noticia3" class="text-blue-800 font-bold text-xs hover:text-amber-700 flex items-center focus:outline-none focus:ring-2 focus:ring-blue-800 rounded">
                             Leer más <i aria-hidden="true" class="fa-solid fa-arrow-right ml-1 text-xs"></i>
                         </a>
                     </div>
@@ -322,14 +363,14 @@
                         </div>
                     </div>
                     <div class="p-4 pt-0">
-                        <a aria-label="Leer más sobre el Proyecto RAÍCES" href="#noticia4" class="text-blue-800 font-bold text-xs hover:text-amber-700 flex items-center">
+                        <a aria-label="Leer más sobre el Proyecto RAÍCES" href="#noticia4" class="text-blue-800 font-bold text-xs hover:text-amber-700 flex items-center focus:outline-none focus:ring-2 focus:ring-blue-800 rounded">
                             Leer más <i aria-hidden="true" class="fa-solid fa-arrow-right ml-1 text-xs"></i>
                         </a>
                     </div>
                 </article>
             </div>
             <div class="text-center mt-8">
-                <a href="https://www.unh.edu.pe/" class="inline-block bg-[#0b2545] hover:bg-blue-900 text-white font-bold text-xs px-6 py-2.5 rounded uppercase tracking-wider transition">Ver más noticias</a>
+                <a href="https://www.unh.edu.pe/" class="inline-block bg-[#0b2545] hover:bg-blue-900 text-white font-bold text-xs px-6 py-2.5 rounded uppercase tracking-wider transition focus:outline-none focus:ring-2 focus:ring-blue-900">Ver más noticias</a>
             </div>
         </div>
     </section>
@@ -348,28 +389,28 @@
                         <h3 class="font-bold text-sm text-slate-800 uppercase mb-2">Caja Huancavelica</h3>
                         <p class="text-xs text-slate-600 mb-4">Comisión de S/ 1.00 por transacciones autorizadas.</p>
                     </div>
-                    <a href="https://appunh.com/tarifas-publicas" target="_blank" class="bg-[#0b2545] text-white text-xs font-semibold py-1.5 rounded uppercase">Ver Tarifario</a>
+                    <a href="https://appunh.com/tarifas-publicas" target="_blank" class="bg-[#0b2545] text-white text-xs font-semibold py-1.5 rounded uppercase focus:outline-none focus:ring-2 focus:ring-blue-900">Ver Tarifario</a>
                 </div>
                 <div class="border border-gray-300 rounded-xl p-5 bg-slate-50 flex flex-col justify-between text-center">
                     <div>
                         <h3 class="font-bold text-sm text-slate-800 uppercase mb-2">Caja Huancayo</h3>
                         <p class="text-xs text-slate-600 mb-4">Comisión de S/ 1.00 en ventanillas autorizadas.</p>
                     </div>
-                    <a href="https://appunh.com/tarifas-publicas" target="_blank" class="bg-[#0b2545] text-white text-xs font-semibold py-1.5 rounded uppercase">Ver Tarifario</a>
+                    <a href="https://appunh.com/tarifas-publicas" target="_blank" class="bg-[#0b2545] text-white text-xs font-semibold py-1.5 rounded uppercase focus:outline-none focus:ring-2 focus:ring-blue-900">Ver Tarifario</a>
                 </div>
                 <div class="border border-gray-300 rounded-xl p-5 bg-slate-50 flex flex-col justify-between text-center">
                     <div>
                         <h3 class="font-bold text-sm text-slate-800 uppercase mb-2">Banco de la Nación</h3>
                         <p class="text-xs text-slate-600 mb-4">Transacción 9650 indicando el código de tasa correspondiente.</p>
                     </div>
-                    <a href="https://www.unh.edu.pe/pago-virtual/" target="_blank" class="bg-[#0b2545] text-white text-xs font-semibold py-1.5 rounded uppercase">Ver Códigos</a>
+                    <a href="https://www.unh.edu.pe/pago-virtual/" target="_blank" class="bg-[#0b2545] text-white text-xs font-semibold py-1.5 rounded uppercase focus:outline-none focus:ring-2 focus:ring-blue-900">Ver Códigos</a>
                 </div>
                 <div class="border border-gray-300 rounded-xl p-5 bg-slate-50 flex flex-col justify-between text-center">
                     <div>
                         <h3 class="font-bold text-sm text-slate-800 uppercase mb-2">Págalo.pe</h3>
                         <p class="text-xs text-slate-600 mb-4">Plataforma digital 24 horas con tarjeta de débito o crédito.</p>
                     </div>
-                    <a href="https://pagalo.pe/" target="_blank" class="bg-[#0b2545] text-white text-xs font-semibold py-1.5 rounded uppercase">Manual de Uso</a>
+                    <a href="https://pagalo.pe/" target="_blank" class="bg-[#0b2545] text-white text-xs font-semibold py-1.5 rounded uppercase focus:outline-none focus:ring-2 focus:ring-blue-900">Manual de Uso</a>
                 </div>
             </div>
             
@@ -424,10 +465,10 @@
         <div class="max-w-7xl mx-auto px-4 md:px-12 border-t border-blue-900 pt-6 flex flex-col sm:flex-row justify-between items-center text-slate-400 text-xs gap-3">
             <p>&copy; 2026 Universidad Nacional de Huancavelica. Todos los derechos reservados.</p>
             <div class="flex space-x-4">
-                <a href="#terminos" class="hover:text-white">Términos de Uso</a>
-                <a href="#privacidad" class="hover:text-white">Privacidad</a>
-                <a href="#reclamaciones" class="hover:text-white">Libro de Reclamaciones</a>
-                <a href="#transparencia" class="hover:text-white">Portal de Transparencia</a>
+                <a href="#terminos" class="hover:text-white focus:outline-none focus:ring-2 focus:ring-white rounded">Términos de Uso</a>
+                <a href="#privacidad" class="hover:text-white focus:outline-none focus:ring-2 focus:ring-white rounded">Privacidad</a>
+                <a href="#reclamaciones" class="hover:text-white focus:outline-none focus:ring-2 focus:ring-white rounded">Libro de Reclamaciones</a>
+                <a href="#transparencia" class="hover:text-white focus:outline-none focus:ring-2 focus:ring-white rounded">Portal de Transparencia</a>
             </div>
         </div>
     </footer>
